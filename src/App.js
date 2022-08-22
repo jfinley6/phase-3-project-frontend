@@ -42,6 +42,8 @@ function App() {
         <LoginForm
           show={show}
           handleClose={handleClose}
+          email={email}
+          password={password}
           setEmail={setEmail}
           setPassword={setPassword}
         />
@@ -51,6 +53,9 @@ function App() {
           setEmail={setEmail}
           setPassword={setPassword}
           setUsername={setUsername}
+          username={username}
+          email={email}
+          password={password}
         />
       </div>
     </div>
