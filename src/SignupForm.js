@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { auth } from './firebase';
+
 // import firebase from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
@@ -23,7 +24,7 @@ function SignupForm({ handleClose, show, password, setPassword, email, setEmail,
 
   return (
     
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Signup</Modal.Title>
       </Modal.Header>
@@ -35,6 +36,7 @@ function SignupForm({ handleClose, show, password, setPassword, email, setEmail,
               onChange={(event) => setUsername(event.target.value)}
               type="username"
               autoFocus
+              autoComplete="off"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -42,6 +44,7 @@ function SignupForm({ handleClose, show, password, setPassword, email, setEmail,
             <Form.Control
               onChange={(event) => setEmail(event.target.value)}
               type="email"
+              autoComplete="off"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -49,6 +52,7 @@ function SignupForm({ handleClose, show, password, setPassword, email, setEmail,
             <Form.Control
               onChange={(event) => setPassword(event.target.value)}
               type="password"
+              autoComplete="off"
             />
           </Form.Group>
         </Form>
