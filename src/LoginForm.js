@@ -2,19 +2,25 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { auth } from './firebase';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "./firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-
-function LoginForm({ show, handleClose, setEmail, setPassword, password, email }) {
-
-  const signIn = (e)=> {
+function LoginForm({
+  show,
+  handleClose,
+  setEmail,
+  setPassword,
+  password,
+  email,
+  user,
+}) {
+  const signIn = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-    .catch((error) => alert(error.message))
-    handleClose()
-
-  }
+    signInWithEmailAndPassword(auth, email, password).catch((error) =>
+      alert(error.message)
+    );
+    handleClose();
+  };
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>

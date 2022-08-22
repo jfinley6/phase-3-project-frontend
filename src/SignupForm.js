@@ -2,28 +2,36 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { auth } from './firebase';
+import { auth } from "./firebase";
 
 // import firebase from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-function SignupForm({ handleClose, show, password, setPassword, email, setEmail, username, setUsername }) {
-
+function SignupForm({
+  handleClose,
+  show,
+  password,
+  setPassword,
+  email,
+  setEmail,
+  username,
+  setUsername,
+  user,
+}) {
   const signUp = (e) => {
-    e.preventDefault()
- 
+    e.preventDefault();
+
     createUserWithEmailAndPassword(auth, email, password)
-     .then((authUser) => {
-       return authUser.user.updateProfile({
-         displayName: username
-       })
-     })
-    .catch((error) => alert(error.message))
-    handleClose()
-   } 
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
+      .catch((error) => alert(error.message));
+    handleClose();
+  };
 
   return (
-    
     <Modal show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Signup</Modal.Title>
@@ -61,7 +69,7 @@ function SignupForm({ handleClose, show, password, setPassword, email, setEmail,
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={signUp} type="submit" >
+        <Button variant="primary" onClick={signUp} type="submit">
           Save Changes
         </Button>
       </Modal.Footer>

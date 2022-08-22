@@ -1,10 +1,11 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import HomePagePicture from "./components/HomePagePicture";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import { auth } from "./firebase";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -12,6 +13,22 @@ function App() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedin, setLoggedin] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubcribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => {
+      unsubcribe();
+    };
+  }, [user, username]);
 
   const handleClose = () => {
     setShow(false);
@@ -24,6 +41,8 @@ function App() {
         setShow={setShow}
         header={"login"}
         setShowSignup={setShowSignup}
+        loggedin={loggedin}
+        user={user}
       />
       <div className="Content">
         <HomePagePicture />
@@ -34,6 +53,7 @@ function App() {
           password={password}
           setEmail={setEmail}
           setPassword={setPassword}
+          user={user}
         />
         <SignupForm
           show={signup}
@@ -44,6 +64,7 @@ function App() {
           username={username}
           email={email}
           password={password}
+          user={user}
         />
       </div>
     </div>
