@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function SignupForm({ handleClose, show }) {
+function SignupForm({ handleClose, show, setPassword, setEmail, setUsername }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -12,12 +12,26 @@ function SignupForm({ handleClose, show }) {
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              onChange={(event) => setUsername(event.target.value)}
+              type="username"
+              autoFocus
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" autoFocus />
+            <Form.Control
+              onChange={(event) => setEmail(event.target.value)}
+              type="email"
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="email" autoFocus />
+            <Form.Control
+              onChange={(event) => setPassword(event.target.value)}
+              type="password"
+            />
           </Form.Group>
         </Form>
       </Modal.Body>

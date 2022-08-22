@@ -10,6 +10,9 @@ function App() {
   const [show, setShow] = useState(false);
   const [signup, setShowSignup] = useState(false);
   const [modalStyle, setModalStyle] = useState(getModalStyle);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClose = () => {
     setShow(false);
@@ -29,14 +32,26 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar setShow={setShow} header={"login"} setShowSignup={setShowSignup} />
+      <NavBar
+        setShow={setShow}
+        header={"login"}
+        setShowSignup={setShowSignup}
+      />
       <div className="Content">
         <HomePagePicture />
         <LoginForm
           show={show}
           handleClose={handleClose}
+          setEmail={setEmail}
+          setPassword={setPassword}
         />
-        <SignupForm show={signup} handleClose={handleClose}/>
+        <SignupForm
+          show={signup}
+          handleClose={handleClose}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          setUsername={setUsername}
+        />
       </div>
     </div>
   );
