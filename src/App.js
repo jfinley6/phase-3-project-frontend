@@ -9,7 +9,6 @@ import SignupForm from "./SignupForm";
 function App() {
   const [show, setShow] = useState(false);
   const [signup, setShowSignup] = useState(false);
-  const [modalStyle, setModalStyle] = useState(getModalStyle);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,17 +17,6 @@ function App() {
     setShow(false);
     setShowSignup(false);
   };
-
-  function getModalStyle() {
-    const top = 50;
-    const left = 50;
-
-    return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
-    };
-  }
 
   return (
     <div className="App">

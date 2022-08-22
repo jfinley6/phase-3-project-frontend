@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 
 function SignupForm({ handleClose, show, setPassword, setEmail, setUsername }) {
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Signup</Modal.Title>
       </Modal.Header>
@@ -17,6 +17,7 @@ function SignupForm({ handleClose, show, setPassword, setEmail, setUsername }) {
               onChange={(event) => setUsername(event.target.value)}
               type="username"
               autoFocus
+              autoComplete="off"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -24,6 +25,7 @@ function SignupForm({ handleClose, show, setPassword, setEmail, setUsername }) {
             <Form.Control
               onChange={(event) => setEmail(event.target.value)}
               type="email"
+              autoComplete="off"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -31,6 +33,7 @@ function SignupForm({ handleClose, show, setPassword, setEmail, setUsername }) {
             <Form.Control
               onChange={(event) => setPassword(event.target.value)}
               type="password"
+              autoComplete="off"
             />
           </Form.Group>
         </Form>
