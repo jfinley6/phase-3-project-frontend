@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown"
 import { auth } from "../firebase";
 
-function NavBar({ setShow, setShowSignup, user }) {
+function NavBar({ setShow, setShowSignup, user, sinatraUser }) {
+
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
       <h1 className="text-4xl text-gray-200">Blackjack App</h1>
@@ -38,13 +39,14 @@ function NavBar({ setShow, setShowSignup, user }) {
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span>
-                  <i className="fa-solid fa-user"></i>
+                  <i className={sinatraUser === null ? null : sinatraUser.icons[0].image_url}></i>
+                  {sinatraUser === null ? null : ` ${sinatraUser.username}`}
                 </span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                <Dropdown.Item>Profile</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Store</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>

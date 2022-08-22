@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { auth } from "./firebase";
 
 // import firebase from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 function SignupForm({
   handleClose,
@@ -22,6 +22,19 @@ function SignupForm({
     e.preventDefault();
 
     createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        fetch("http://localhost:9292/users", {
+          method: "POST",
+          body: JSON.stringify({
+            username: username,
+            email: email,
+          }),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+      })
       .then((authUser) => {
         return authUser.user.updateProfile({
           displayName: username,

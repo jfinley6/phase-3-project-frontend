@@ -15,14 +15,22 @@ function App() {
   const [password, setPassword] = useState("");
   const [loggedin, setLoggedin] = useState(false);
   const [user, setUser] = useState(null);
+  const [sinatraUser, setSinatraUser] = useState(null)
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        console.log(authUser);
         setUser(authUser);
       } else {
         setUser(null);
+      }
+      if (user === null) {
+      return;
+      }
+      else {
+        fetch(`http://localhost:9292/users/${user.email}`)
+          .then((res) => res.json())
+          .then((data) => setSinatraUser(data));
       }
     });
     return () => {
@@ -43,6 +51,7 @@ function App() {
         setShowSignup={setShowSignup}
         loggedin={loggedin}
         user={user}
+        sinatraUser={sinatraUser}
       />
       <div className="Content">
         <HomePagePicture />
