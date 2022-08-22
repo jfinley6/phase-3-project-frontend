@@ -1,5 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown"
+import { auth } from "../firebase";
 
 function NavBar({ setShow, setShowSignup, user }) {
   return (
@@ -25,15 +27,27 @@ function NavBar({ setShow, setShowSignup, user }) {
           </>
         )}
         {user ? (
-          <>
+          <div style={{ display: "flex" }}>
             <Button
               style={{ width: "100px", marginRight: "10px" }}
-              onClick={() => setShow(true)}
+              onClick={() => auth.signOut()}
               variant="primary"
             >
               Logout
             </Button>
-          </>
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <span>
+                  <i className="fa-solid fa-user"></i>
+                </span>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         ) : null}
       </div>
     </header>
