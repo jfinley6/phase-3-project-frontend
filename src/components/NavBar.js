@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown"
 import { auth } from "../firebase";
 
-function NavBar({ setShow, setShowSignup, user, sinatraUser }) {
+function NavBar({ setShow, setShowSignup, user, sinatraUser, setShowProfile, setShowDeleteProfile }) {
 
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
@@ -39,14 +39,27 @@ function NavBar({ setShow, setShowSignup, user, sinatraUser }) {
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span>
-                  <i className={sinatraUser === null ? null : sinatraUser.icons[0].image_url}></i>
-                  {sinatraUser === null ? null : ` ${sinatraUser.username}`}
+                  <i
+                    className={
+                      sinatraUser === null
+                        ? null
+                        : sinatraUser.icons[0].image_url
+                    }
+                  ></i>
+                  {sinatraUser === null
+                    ? null
+                    : ` ${sinatraUser.username} • ${sinatraUser.tokens} tokens`}
                 </span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item>Profile</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Store</Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowProfile(true)}>
+                  Profile
+                </Dropdown.Item>
+                <Dropdown.Item>Icon Store</Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
+                  Delete Profile
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>

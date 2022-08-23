@@ -1,21 +1,24 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import HomePagePicture from "./components/HomePagePicture";
 import LoginForm from "./LoginForm";
+import Profile from "./Profile";
 import SignupForm from "./SignupForm";
+import DeleteProfile from "./DeleteProfile";
+
 import { auth } from "./firebase";
 
 function App() {
   const [show, setShow] = useState(false);
   const [signup, setShowSignup] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+  const [showDeleteProfile, setShowDeleteProfile] = useState(false)
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedin, setLoggedin] = useState(false);
   const [user, setUser] = useState(null);
-  const [sinatraUser, setSinatraUser] = useState(null)
+  const [sinatraUser, setSinatraUser] = useState(null);
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -25,9 +28,8 @@ function App() {
         setUser(null);
       }
       if (user === null) {
-      return;
-      }
-      else {
+        return;
+      } else {
         fetch(`http://localhost:9292/users/${user.email}`)
           .then((res) => res.json())
           .then((data) => setSinatraUser(data));
@@ -41,6 +43,8 @@ function App() {
   const handleClose = () => {
     setShow(false);
     setShowSignup(false);
+    setShowProfile(false);
+    setShowDeleteProfile(false)
   };
 
   return (
@@ -49,9 +53,10 @@ function App() {
         setShow={setShow}
         header={"login"}
         setShowSignup={setShowSignup}
-        loggedin={loggedin}
         user={user}
         sinatraUser={sinatraUser}
+        setShowProfile={setShowProfile}
+        setShowDeleteProfile={setShowDeleteProfile}
       />
       <div className="Content">
         <HomePagePicture />
@@ -75,6 +80,8 @@ function App() {
           password={password}
           user={user}
         />
+        <Profile show={showProfile} handleClose={handleClose} sinatraUser={sinatraUser} />
+        <DeleteProfile show={showDeleteProfile} handleClose={handleClose} sinatraUser={sinatraUser}/>
       </div>
     </div>
   );
