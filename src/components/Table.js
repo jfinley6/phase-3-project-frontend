@@ -5,7 +5,9 @@ import BetAmount from './BetAmount';
 function Table({user, sinatraUser, setSinatraUser}) {
   const [gameStarted, setGameStarted] = useState(false)
   const [betAmount, setBetAmount] = useState(0)
+  const [deck, setDeck] = useState([])
 
+  
 
   function hasTokens(betAmount) {
     if (betAmount <= sinatraUser.tokens) {
@@ -17,6 +19,12 @@ function Table({user, sinatraUser, setSinatraUser}) {
           setSinatraUser(data)
           setBetAmount(0)
           setGameStarted(true)
+          fetch("http://localhost:9292/deck")
+            .then((res) => res.text())
+            .then((data) => {
+              let newDeck = data.split(",")
+              setDeck(newDeck)
+            });
         });
     } else {
       alert("You dont have enough tokens!")
