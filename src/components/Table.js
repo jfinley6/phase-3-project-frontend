@@ -6,6 +6,8 @@ function Table({ user, sinatraUser, setSinatraUser }) {
   const [gameStarted, setGameStarted] = useState(false);
   const [betAmount, setBetAmount] = useState(0);
   const [deck, setDeck] = useState([]);
+  const [playerCards, setPlayerCards] = useState([])
+  const [dealerCards, setDealerCards] = useState([])
 
   function createDeck() {
     let array = []
@@ -33,7 +35,7 @@ function Table({ user, sinatraUser, setSinatraUser }) {
         array.push(card);
       }
     }
-    console.log(array)
+    setDeck(array)
   }
 
   function hasTokens(betAmount) {
