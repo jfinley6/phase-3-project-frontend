@@ -7,7 +7,6 @@ function Table({user, sinatraUser, setSinatraUser}) {
   const [betAmount, setBetAmount] = useState(0)
   const [deck, setDeck] = useState([])
 
-  
 
   function hasTokens(betAmount) {
     if (betAmount <= sinatraUser.tokens) {
@@ -23,8 +22,11 @@ function Table({user, sinatraUser, setSinatraUser}) {
             .then((res) => res.text())
             .then((data) => {
               let newDeck = data.split(",")
-              setDeck(newDeck)
-            });
+              let array = newDeck.map((el) => {
+                return el.trim()
+              })
+              setDeck(array)
+            })
         });
     } else {
       alert("You dont have enough tokens!")
