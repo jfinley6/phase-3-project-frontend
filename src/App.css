@@ -33,3 +33,7 @@ header {
   align-items: center;
 }
 
+.pokerChip:hover {
+  cursor: pointer;
+}
+

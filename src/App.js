@@ -60,7 +60,7 @@ function App() {
         setShowDeleteProfile={setShowDeleteProfile}
       />
       <div className="Content">
-        <HomePagePicture user={user}/>
+        <HomePagePicture user={user} sinatraUser={sinatraUser} setSinatraUser={setSinatraUser}/>
         <LoginForm
           show={show}
           handleClose={handleClose}

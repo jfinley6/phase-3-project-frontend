@@ -1,7 +1,7 @@
 import React from 'react'
 import Table from './Table';
 
-function HomePagePicture({user}) {
+function HomePagePicture({user, sinatraUser, setSinatraUser}) {
   return (
     <div className="homePagePicture">
       <img
@@ -10,7 +10,7 @@ function HomePagePicture({user}) {
         alt=""
         style={{ height: "75vh", width: "90vw" }}
       />
-      <Table user={user} />
+      <Table user={user} sinatraUser={sinatraUser} setSinatraUser={setSinatraUser}/>
     </div>
   );
 }
