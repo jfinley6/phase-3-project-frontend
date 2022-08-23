@@ -22,7 +22,7 @@ function LoginForm({
     handleClose();
   };
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Login</Modal.Title>
       </Modal.Header>
@@ -50,7 +50,7 @@ function LoginForm({
           Close
         </Button>
         <Button variant="primary" onClick={signIn}>
-          Save Changes
+          Login
         </Button>
       </Modal.Footer>
     </Modal>

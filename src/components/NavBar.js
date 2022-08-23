@@ -48,7 +48,7 @@ function NavBar({ setShow, setShowSignup, user, sinatraUser, setShowProfile, set
                   ></i>
                   {sinatraUser === null
                     ? null
-                    : ` ${sinatraUser.username} • ${sinatraUser.tokens} tokens`}
+                    : ` • ${sinatraUser.tokens} tokens`}
                 </span>
               </Dropdown.Toggle>
 

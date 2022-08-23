@@ -83,7 +83,7 @@ function SignupForm({
           Close
         </Button>
         <Button variant="primary" onClick={signUp} type="submit">
-          Save Changes
+          Submit
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,6 +1,7 @@
 import React from 'react'
+import Table from './Table';
 
-function HomePagePicture() {
+function HomePagePicture({user}) {
   return (
     <div className="homePagePicture">
       <img
@@ -9,6 +10,7 @@ function HomePagePicture() {
         alt=""
         style={{ height: "75vh", width: "90vw" }}
       />
+      <Table user={user} />
     </div>
   );
 }

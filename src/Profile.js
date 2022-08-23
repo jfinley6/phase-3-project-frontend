@@ -10,13 +10,13 @@ function Profile({show, handleClose, sinatraUser}) {
         <Modal.Title>Profile</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Username: <b>{sinatraUser ? sinatraUser.username : null}</b>
+        USERNAME: <b>{sinatraUser ? sinatraUser.username : null}</b>
       </Modal.Body>
       <Modal.Body>
-        Email: <b>{sinatraUser ? sinatraUser.email : null}</b>
+        EMAIL: <b>{sinatraUser ? sinatraUser.email : null}</b>
       </Modal.Body>
       <Modal.Body>
-        Tokens: <b>{sinatraUser ? sinatraUser.tokens : null}</b>
+        TOKENS: <b>{sinatraUser ? sinatraUser.tokens : null}</b>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={(event) => handleClose(event)}>

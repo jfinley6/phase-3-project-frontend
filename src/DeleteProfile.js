@@ -6,9 +6,10 @@ import { auth } from "./firebase";
 function DeleteProfile({show, handleClose, sinatraUser}) {
 
     function deleteProfile() {
-         fetch(`http://localhost:9292/users/${sinatraUser.id}`, {
-           method: "DELETE",
-         }).then(() => auth.signOut());
+        //  fetch(`http://localhost:9292/users/${sinatraUser.id}`, {
+        //    method: "DELETE",
+        //  }).then(() => auth.signOut());
+        auth.signOut()
     }
 
   return (
@@ -16,12 +17,14 @@ function DeleteProfile({show, handleClose, sinatraUser}) {
       <Modal.Header closeButton>
         <Modal.Title>Delete Profile</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Are you sure? Deleting your profile is permanent</Modal.Body>
+      <Modal.Body>Are you sure? Deleting your profile is permanent.</Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="danger" onClick={handleClose}>
+        <Button variant="danger" onClick={() => {
+          deleteProfile()
+          handleClose()}}>
           Delete
         </Button>
       </Modal.Footer>

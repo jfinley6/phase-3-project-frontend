@@ -6,6 +6,7 @@ import LoginForm from "./LoginForm";
 import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import DeleteProfile from "./DeleteProfile";
+import Table from "./components/Table";
 
 import { auth } from "./firebase";
 
@@ -59,7 +60,7 @@ function App() {
         setShowDeleteProfile={setShowDeleteProfile}
       />
       <div className="Content">
-        <HomePagePicture />
+        <HomePagePicture user={user}/>
         <LoginForm
           show={show}
           handleClose={handleClose}
