@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "react-bootstrap/Button";
 
 
-function PlayerInput({setDealersTurn, playerCards}) {
+function PlayerInput({setDealersTurn, playerCards, deck, setPlayerCards}) {
 
   function dealCards() {
     let randomCard1 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];

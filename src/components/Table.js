@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Chips from "./Chips";
 import BetAmount from "./BetAmount";
-<<<<<<< HEAD
-import Card from "./Card";
 import PlayerInput from "./PlayerInput";
-=======
 import PlayerCard from "./PlayerCard";
-import DealerCard from "./DealerCard"
->>>>>>> 5f70d457a519d704d65c4013b60b9e832d13efdb
+import DealerCard from "./DealerCard";
 
 function Table({
   user,
@@ -80,8 +76,8 @@ function Table({
   });
 
   const cards2 = dealerCards.map((card) => {
-    return <DealerCard card={card} key={`${card.Value} ${card.Suit}`} />
-  })
+    return <DealerCard card={card} key={`${card.Value} ${card.Suit}`} />;
+  });
 
   function hasTokens(betAmount) {
     if (betAmount <= sinatraUser.tokens) {
@@ -115,7 +111,15 @@ function Table({
             style={{ width: "90vw", height: "75vh" }}
             src="images/Blackjack-bg.jpeg"
           ></img>
-          {gameStarted ? <PlayerInput playerCards={playerCards} /> : <Chips setBetAmount={setBetAmount} />}
+          {gameStarted ? (
+            <PlayerInput
+              deck={deck}
+              playerCards={playerCards}
+              setPlayerCards={setPlayerCards}
+            />
+          ) : (
+            <Chips setBetAmount={setBetAmount} />
+          )}
           {gameStarted ? null : (
             <BetAmount
               setBetAmount={setBetAmount}
