@@ -65,8 +65,6 @@ function Table({
     setDeck((deck) => [...deck, ...array]);
   }
 
-
-
   useEffect(() => {
     let dealerScoreAmount = dealerCards.reduce((sum, curr) => {
       return curr.Number + sum;
@@ -112,6 +110,7 @@ function Table({
   });
 
   function hasTokens(betAmount) {
+    setPush(false)
     setWin(false)
     setLost(false)
     setGameStarted(false)

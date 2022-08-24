@@ -33,7 +33,7 @@ function BetAmount({ betAmount, setBetAmount, hasTokens }) {
         style={{
           position: "absolute",
           top: "86%",
-          width: "50px",
+          width: "45px",
           display: "flex",
           justifyContent: "center"
         }}

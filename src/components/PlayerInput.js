@@ -207,7 +207,7 @@ function PlayerInput({
             fontSize: "3em",
           }}
         >
-          Push! You tried but tied
+          You Pushed!
         </div>
       ) : null }
     </>
