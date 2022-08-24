@@ -34,6 +34,7 @@ function Table({
   const [deck, setDeck] = useState([]);
 
   function createDeck() {
+    setDeck([])
     let array = [];
     let suits = ["♠", "♦", "♥", "♣"];
     let values = [
@@ -109,10 +110,11 @@ function Table({
   });
 
   function hasTokens(betAmount) {
+    setWin(false)
+    setLost(false)
     setGameStarted(false)
     setPlayerCards([])
     setDealerCards([])
-    setBetAmount(0)
     if (betAmount === 0) {
       alert("You can't play for free!");
       return;
@@ -168,6 +170,7 @@ function Table({
               sinatraUser={sinatraUser}
               setSinatraUser={setSinatraUser}
               betAmount={betAmount}
+              setBetAmount={setBetAmount}
               setGameStarted={setGameStarted}
               win={win}
               setWin={setWin}

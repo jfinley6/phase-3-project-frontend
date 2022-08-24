@@ -23,7 +23,8 @@ function PlayerInput({
   win,
   setWin,
   lost,
-  setLost
+  setLost,
+  setBetAmount
 }) {
   function hasWon() {
     let newTokens = sinatraUser.tokens + betAmount * 2;
@@ -32,19 +33,26 @@ function PlayerInput({
       .then((data) => {
         setSinatraUser(null);
         setSinatraUser(data);
+        setBetAmount(0)
       });
   }
 
   useEffect(() => {
     if (dealerScore > 21) {
+      setWin(true)
       hasWon();
+      setTimeout(() => {
+        setGameStarted(false)
+      }, 3000)
+
     }
     if (dealerScore >= 17 && dealerScore < 22) {
       if (dealerScore > playerScore) {
         setLost(true)
+        setBetAmount(0)
         setTimeout(() => {
           setGameStarted(false);
-        }, 1500)
+        }, 3000)
       }
     }
   }, [playerScore, dealerScore]);
@@ -56,14 +64,6 @@ function PlayerInput({
     )[0];
     setPlayerCards([...playerCards, randomCard1]);
   }
-
-  function hasLost() {}
-
-  useEffect(() => {
-    if (playerScore > 21) {
-      hasLost();
-    }
-  }, [playerScore]);
 
   function dealCardsDealer() {
     let randomCard1 = deck.splice(
