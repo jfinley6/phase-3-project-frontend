@@ -89,19 +89,25 @@ function Table({
   });
 
   function hasTokens(betAmount) {
-    if (betAmount <= sinatraUser.tokens) {
-      let newTokens = sinatraUser.tokens - betAmount;
-      fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setSinatraUser(null);
-          setSinatraUser(data);
-          setGameStarted(true);
-        })
-        .then(() => createDeck());
+    if (betAmount === 0) {
+      alert("You can't play for free!")
+      return
     } else {
-      alert("You dont have enough tokens!");
+      if (betAmount <= sinatraUser.tokens) {
+        let newTokens = sinatraUser.tokens - betAmount;
+        fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setSinatraUser(null);
+            setSinatraUser(data);
+            setGameStarted(true);
+          })
+          .then(() => createDeck());
+      } else {
+        alert("You dont have enough tokens!");
+      }
     }
+    
   }
 
   return (
@@ -141,6 +147,7 @@ function Table({
           )}
         </div>
       ) : null}
+      {gameStarted ? <div style={{position: "absolute", color: "white", fontSize: "1.7em", left: "10vw", top: "30vh"}}>Player Score: {playerScore}</div> : null}
       <div style={{ position: "absolute", display: "flex", left: "10vw" }}>
         {gameStarted ? cards : null}
       </div>
