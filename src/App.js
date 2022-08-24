@@ -6,7 +6,6 @@ import LoginForm from "./LoginForm";
 import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import DeleteProfile from "./DeleteProfile";
-import Table from "./components/Table";
 
 import { auth } from "./firebase";
 
@@ -14,12 +13,13 @@ function App() {
   const [show, setShow] = useState(false);
   const [signup, setShowSignup] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const [showDeleteProfile, setShowDeleteProfile] = useState(false)
+  const [showDeleteProfile, setShowDeleteProfile] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
   const [sinatraUser, setSinatraUser] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false);
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -45,7 +45,7 @@ function App() {
     setShow(false);
     setShowSignup(false);
     setShowProfile(false);
-    setShowDeleteProfile(false)
+    setShowDeleteProfile(false);
   };
 
   return (
@@ -58,9 +58,16 @@ function App() {
         sinatraUser={sinatraUser}
         setShowProfile={setShowProfile}
         setShowDeleteProfile={setShowDeleteProfile}
+        setGameStarted={setGameStarted}
       />
       <div className="Content">
-        <HomePagePicture user={user} sinatraUser={sinatraUser} setSinatraUser={setSinatraUser}/>
+        <HomePagePicture
+          user={user}
+          sinatraUser={sinatraUser}
+          setSinatraUser={setSinatraUser}
+          gameStarted={gameStarted}
+          setGameStarted={setGameStarted}
+        />
         <LoginForm
           show={show}
           handleClose={handleClose}
@@ -81,8 +88,17 @@ function App() {
           password={password}
           user={user}
         />
-        <Profile show={showProfile} handleClose={handleClose} sinatraUser={sinatraUser} />
-        <DeleteProfile show={showDeleteProfile} handleClose={handleClose} sinatraUser={sinatraUser}/>
+        <Profile
+          show={showProfile}
+          handleClose={handleClose}
+          sinatraUser={sinatraUser}
+        />
+        <DeleteProfile
+          show={showDeleteProfile}
+          handleClose={handleClose}
+          sinatraUser={sinatraUser}
+          setGameStarted={setGameStarted}
+        />
       </div>
     </div>
   );

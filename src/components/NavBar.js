@@ -1,10 +1,17 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown"
+import Dropdown from "react-bootstrap/Dropdown";
 import { auth } from "../firebase";
 
-function NavBar({ setShow, setShowSignup, user, sinatraUser, setShowProfile, setShowDeleteProfile }) {
-
+function NavBar({
+  setShow,
+  setShowSignup,
+  user,
+  sinatraUser,
+  setShowProfile,
+  setShowDeleteProfile,
+  setGameStarted,
+}) {
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
       <h1 className="text-4xl text-gray-200">Blackjack App</h1>
@@ -31,7 +38,10 @@ function NavBar({ setShow, setShowSignup, user, sinatraUser, setShowProfile, set
           <div style={{ display: "flex" }}>
             <Button
               style={{ width: "100px", marginRight: "10px" }}
-              onClick={() => auth.signOut()}
+              onClick={() => {
+                setGameStarted(false);
+                auth.signOut();
+              }}
               variant="primary"
             >
               Logout
@@ -56,6 +66,7 @@ function NavBar({ setShow, setShowSignup, user, sinatraUser, setShowProfile, set
                 <Dropdown.Item onClick={() => setShowProfile(true)}>
                   Profile
                 </Dropdown.Item>
+                <Dropdown.Item>Blackjack Rules</Dropdown.Item>
                 <Dropdown.Item>Icon Store</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
                   Delete Profile

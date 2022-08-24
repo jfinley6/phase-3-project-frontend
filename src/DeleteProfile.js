@@ -3,12 +3,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { auth } from "./firebase";
 
-function DeleteProfile({show, handleClose, sinatraUser}) {
+function DeleteProfile({show, handleClose, setGameStarted}) {
 
     function deleteProfile() {
         //  fetch(`http://localhost:9292/users/${sinatraUser.id}`, {
         //    method: "DELETE",
         //  }).then(() => auth.signOut());
+        setGameStarted(false)
         auth.signOut()
     }
 

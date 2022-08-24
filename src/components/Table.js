@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chips from "./Chips";
 import BetAmount from "./BetAmount";
 
-function Table({ user, sinatraUser, setSinatraUser }) {
-  const [gameStarted, setGameStarted] = useState(false);
+function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted }) {
+  
   const [betAmount, setBetAmount] = useState(0);
   const [deck, setDeck] = useState([]);
   const [playerCards, setPlayerCards] = useState([])
@@ -35,7 +35,21 @@ function Table({ user, sinatraUser, setSinatraUser }) {
         array.push(card);
       }
     }
-    setDeck(array)
+    setDeck(deck => [...deck, ...array])
+  }
+
+  useEffect(() => {
+    if (gameStarted === true && playerCards.length === 0) {
+    dealCards()
+    }
+    
+  },[deck])
+
+  function dealCards() {
+    let randomCard1 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
+    setPlayerCards([...playerCards, randomCard1])
+    let randomCard2 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
+    setDealerCards([...dealerCards, randomCard2, "empty"])
   }
 
   function hasTokens(betAmount) {
@@ -46,7 +60,6 @@ function Table({ user, sinatraUser, setSinatraUser }) {
         .then((data) => {
           setSinatraUser(null);
           setSinatraUser(data);
-          setBetAmount(0);
           setGameStarted(true);
         })
         .then(() => createDeck());
@@ -68,7 +81,7 @@ function Table({ user, sinatraUser, setSinatraUser }) {
         >
           <img
             className="rounded-2xl"
-            style={{ width: "60vw", height: "70vh" }}
+            style={{ width: "90vw", height: "75vh" }}
             src="images/Blackjack-bg.jpeg"
           ></img>
           {gameStarted ? null : <Chips setBetAmount={setBetAmount} />}

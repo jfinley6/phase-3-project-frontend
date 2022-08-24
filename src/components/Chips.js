@@ -22,7 +22,7 @@ function Chip({ setBetAmount }) {
           style={{ width: "50px", height: "50px" }}
           src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
         />
-        <div style={{ position: "absolute", top: "30%", left: "40%" }}>5</div>
+        <div style={{ position: "absolute", top: "30%", left: "39%" }}><b>5</b></div>
       </div>
       <div
         onClick={() => setBetAmount((count) => count + 10)}
@@ -33,7 +33,7 @@ function Chip({ setBetAmount }) {
           style={{ width: "50px", height: "50px" }}
           src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
         />
-        <div style={{ position: "absolute", top: "30%", left: "33%" }}>10</div>
+        <div style={{ position: "absolute", top: "30%", left: "31%" }}><b>10</b></div>
       </div>
       <div
         onClick={() => setBetAmount((count) => count + 25)}
@@ -44,7 +44,7 @@ function Chip({ setBetAmount }) {
           style={{ width: "50px", height: "50px" }}
           src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
         />
-        <div style={{ position: "absolute", top: "30%", left: "31%" }}>25</div>
+        <div style={{ position: "absolute", top: "30%", left: "29%" }}><b>25</b></div>
       </div>
       <div
         onClick={() => setBetAmount((count) => count + 100)}
@@ -55,7 +55,7 @@ function Chip({ setBetAmount }) {
           style={{ width: "50px", height: "50px" }}
           src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
         />
-        <div style={{ position: "absolute", top: "30%", left: "24%" }}>100</div>
+        <div style={{ position: "absolute", top: "30%", left: "21%" }}><b>100</b></div>
       </div>
     </div>
   );
