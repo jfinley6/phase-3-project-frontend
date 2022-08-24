@@ -24,7 +24,9 @@ function HomePagePicture({
   win,
   setWin,
   lost,
-  setLost
+  setLost,
+  push,
+  setPush
 }) {
   return (
     <div className="homePagePicture">
@@ -58,6 +60,8 @@ function HomePagePicture({
         setWin={setWin}
         lost={lost}
         setLost={setLost}
+        push={push}
+        setPush={setPush}
       />
     </div>
   );

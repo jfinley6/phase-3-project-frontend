@@ -29,6 +29,7 @@ function App() {
   const [isPlayerBusted, setIsPlayerBusted] = useState(false)
   const [win, setWin] = useState(false)
   const [lost, setLost] = useState(false)
+  const [push, setPush] = useState(false)
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -98,6 +99,8 @@ function App() {
           setWin={setWin}
           lost={lost}
           setLost={setLost}
+          push={push}
+          setPush={setPush}
         />
         <LoginForm
           show={show}

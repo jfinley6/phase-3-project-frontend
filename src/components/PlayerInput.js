@@ -25,7 +25,22 @@ function PlayerInput({
   lost,
   setLost,
   setBetAmount,
+  push,
+  setPush
 }) {
+  function hasPushed() {
+    let newTokens = sinatraUser.tokens + betAmount;
+    fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSinatraUser(null);
+        setSinatraUser(data);
+        setBetAmount(0);
+      });
+  }
+  
+
+
   function hasWon() {
     let newTokens = sinatraUser.tokens + betAmount * 2;
     fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
@@ -81,6 +96,11 @@ function PlayerInput({
             setGameStarted(false);
           }, 2000);
         } else if (playerScore === dealerScore) {
+          setPush(true)
+          hasPushed()
+          setTimeout(() => {
+            setGameStarted(false);
+          }, 2000);
         } else if (dealerScore > 21) {
           setWin(true);
           hasWon()
@@ -178,6 +198,18 @@ function PlayerInput({
           You Lost!
         </div>
       ) : null}
+      {push? (
+        <div
+          style={{
+            color: "white",
+            position: "absolute",
+            top: "5vh",
+            fontSize: "3em",
+          }}
+        >
+          Push! You tried but tied
+        </div>
+      ) : null }
     </>
   );
 }

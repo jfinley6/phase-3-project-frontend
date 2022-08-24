@@ -28,7 +28,9 @@ function Table({
   win={win},
   setWin={setWin},
   lost={lost},
-  setLost={setLost}
+  setLost={setLost},
+  push={push},
+  setPush={setPush}
 }) {
   const [betAmount, setBetAmount] = useState(0);
   const [deck, setDeck] = useState([]);
@@ -176,6 +178,8 @@ function Table({
               setWin={setWin}
               lost={lost}
               setLost={setLost}
+              push={push}
+              setPush={setPush}
             />
           ) : (
             <Chips setBetAmount={setBetAmount} />
