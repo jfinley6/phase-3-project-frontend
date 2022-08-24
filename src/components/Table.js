@@ -129,10 +129,10 @@ function Table({
           )}
         </div>
       ) : null}
-      <div style={{ position: "absolute", display: "flex", left: "150px" }}>
+      <div style={{ position: "absolute", display: "flex", left: "10vw" }}>
         {gameStarted ? cards : null}
       </div>
-      <div style={{ position: "absolute", display: "flex", right: "250px" }}>
+      <div style={{ position: "absolute", display: "flex", right: "10vw" }}>
         {gameStarted ? cards2 : null}
       </div>
     </>

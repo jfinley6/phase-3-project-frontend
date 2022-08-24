@@ -7,8 +7,8 @@ function PlayerCard({card}) {
       style={{
         width: "50px",
         background: "white",
-        height: "20vh",
-        width: "100px",
+        height: "15vh",
+        width: "60px",
         marginRight: "10px",
         borderRadius: "10px",
       }}
