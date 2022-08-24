@@ -116,6 +116,8 @@ function Table({
               deck={deck}
               playerCards={playerCards}
               setPlayerCards={setPlayerCards}
+              setDealerCards={setDealerCards}
+              dealerCards={dealerCards}
             />
           ) : (
             <Chips setBetAmount={setBetAmount} />
