@@ -22,6 +22,7 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [playerCards, setPlayerCards] = useState([]);
   const [dealerCards, setDealerCards] = useState([]);
+  const [playerScore, setPlayerScore] = useState(0)
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -77,6 +78,8 @@ function App() {
           setPlayerCards={setPlayerCards}
           dealerCards={dealerCards}
           setDealerCards={setDealerCards}
+          playerScore={playerScore}
+          setPlayerScore={setPlayerScore}
         />
         <LoginForm
           show={show}

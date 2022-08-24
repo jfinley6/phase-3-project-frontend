@@ -15,6 +15,8 @@ function Table({
   dealerCards,
   setPlayerCards,
   setDealerCards,
+  playerScore,
+  setPlayerScore
 }) {
   const [betAmount, setBetAmount] = useState(0);
   const [deck, setDeck] = useState([]);
@@ -47,6 +49,13 @@ function Table({
     }
     setDeck((deck) => [...deck, ...array]);
   }
+
+  useEffect(() => {
+    let playerScoreAmount = playerCards.reduce((sum, curr) => {
+      return curr.Number + sum;
+    }, 0);
+    setPlayerScore(playerScoreAmount)
+  },[playerCards])
 
   useEffect(() => {
     if (gameStarted === true && playerCards.length === 0) {
@@ -118,6 +127,7 @@ function Table({
               setPlayerCards={setPlayerCards}
               setDealerCards={setDealerCards}
               dealerCards={dealerCards}
+              playerScore={playerScore}
             />
           ) : (
             <Chips setBetAmount={setBetAmount} />

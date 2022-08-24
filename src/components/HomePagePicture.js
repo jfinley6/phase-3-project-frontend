@@ -10,7 +10,9 @@ function HomePagePicture({
   playerCards,
   setPlayerCards,
   dealerCards,
-  setDealerCards
+  setDealerCards,
+  playerScore, 
+  setPlayerScore
 }) {
   return (
     <div className="homePagePicture">
@@ -30,6 +32,8 @@ function HomePagePicture({
         setPlayerCards={setPlayerCards}
         dealerCards={dealerCards}
         setDealerCards={setDealerCards}
+        playerScore={playerScore}
+        setPlayerScore={setPlayerScore}
       />
     </div>
   );
