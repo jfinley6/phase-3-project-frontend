@@ -20,6 +20,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [sinatraUser, setSinatraUser] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [playerCards, setPlayerCards] = useState([]);
+  const [dealerCards, setDealerCards] = useState([]);
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -59,6 +61,10 @@ function App() {
         setShowProfile={setShowProfile}
         setShowDeleteProfile={setShowDeleteProfile}
         setGameStarted={setGameStarted}
+        playerCards={playerCards}
+        setPlayerCards={setPlayerCards}
+        dealerCards={dealerCards}
+        setDealerCards={setDealerCards}
       />
       <div className="Content">
         <HomePagePicture
@@ -67,6 +73,10 @@ function App() {
           setSinatraUser={setSinatraUser}
           gameStarted={gameStarted}
           setGameStarted={setGameStarted}
+          playerCards={playerCards}
+          setPlayerCards={setPlayerCards}
+          dealerCards={dealerCards}
+          setDealerCards={setDealerCards}
         />
         <LoginForm
           show={show}
@@ -98,6 +108,10 @@ function App() {
           handleClose={handleClose}
           sinatraUser={sinatraUser}
           setGameStarted={setGameStarted}
+          playerCards={playerCards}
+          setPlayerCards={setPlayerCards}
+          dealerCards={dealerCards}
+          setDealerCards={setDealerCards}
         />
       </div>
     </div>

@@ -7,6 +7,10 @@ function HomePagePicture({
   setSinatraUser,
   gameStarted,
   setGameStarted,
+  playerCards,
+  setPlayerCards,
+  dealerCards,
+  setDealerCards
 }) {
   return (
     <div className="homePagePicture">
@@ -22,6 +26,10 @@ function HomePagePicture({
         setSinatraUser={setSinatraUser}
         gameStarted={gameStarted}
         setGameStarted={setGameStarted}
+        playerCards={playerCards}
+        setPlayerCards={setPlayerCards}
+        dealerCards={dealerCards}
+        setDealerCards={setDealerCards}
       />
     </div>
   );
