@@ -24,7 +24,7 @@ function PlayerInput({
   setWin,
   lost,
   setLost,
-  setBetAmount
+  setBetAmount,
 }) {
   function hasWon() {
     let newTokens = sinatraUser.tokens + betAmount * 2;
@@ -33,26 +33,77 @@ function PlayerInput({
       .then((data) => {
         setSinatraUser(null);
         setSinatraUser(data);
-        setBetAmount(0)
+        setBetAmount(0);
       });
   }
 
   useEffect(() => {
     if (dealerScore > 21) {
-      setWin(true)
-      hasWon();
+      setWin()
+      hasWon()
       setTimeout(() => {
-        setGameStarted(false)
-      }, 3000)
+        setGameStarted(false);
+      }, 2000);
+    }
+
+    if (playerScore < 17 && playerTurn === false) {
+      setTimeout(() => {
+        dealCardsDealer();
+      }, 2000);
 
     }
+    if (playerScore === 21) {
+      setWin(true);
+      hasWon();
+      setTimeout(() => {
+        setGameStarted(false);
+      }, 2000);
+    }
+    if (playerScore > 21) {
+      setLost(true);
+      setBetAmount(0)
+      setTimeout(() => {
+        setGameStarted(false);
+      }, 2000);
+    }
+
+    if (playerScore >= 17 && playerScore < 21) {
+      setPlayerTurn(false);
+      if (dealerScore < 17) {
+        setTimeout(() => {
+          dealCardsDealer();
+        }, 2000);
+      } else {
+        if (playerScore > dealerScore) {
+          setWin(true);
+          hasWon();
+          setTimeout(() => {
+            setGameStarted(false);
+          }, 2000);
+        } else if (playerScore === dealerScore) {
+        } else if (dealerScore > 21) {
+          setWin(true);
+          hasWon()
+          setTimeout(() => {
+            setGameStarted(false);
+          }, 2000);
+        } else if (dealerScore > playerScore) {
+          setLost(true)
+          setBetAmount(0)
+          setTimeout(() => {
+            setGameStarted(false);
+          }, 2000);
+        }
+      }
+    }
+
     if (dealerScore >= 17 && dealerScore < 22) {
       if (dealerScore > playerScore) {
-        setLost(true)
-        setBetAmount(0)
+        setLost(true);
+        setBetAmount(0);
         setTimeout(() => {
           setGameStarted(false);
-        }, 3000)
+        }, 2000);
       }
     }
   }, [playerScore, dealerScore]);
@@ -70,7 +121,7 @@ function PlayerInput({
       Math.floor(Math.random() * deck.length),
       1
     )[0];
-    if (dealerScore < 100) setDealerCards([...dealerCards, randomCard1]);
+    setDealerCards([...dealerCards, randomCard1]);
   }
 
   return (
@@ -94,7 +145,9 @@ function PlayerInput({
             </Button>
             <Button
               style={{ width: "100px" }}
-              onClick={() => dealCardsDealer()}
+              onClick={() => {
+                setPlayerTurn(false)
+                dealCardsDealer()}}
             >
               Stand
             </Button>
