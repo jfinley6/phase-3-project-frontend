@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Chips from "./Chips";
 import BetAmount from "./BetAmount";
+import Card from "./Card";
 
 function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted }) {
   
@@ -47,10 +48,15 @@ function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted 
 
   function dealCards() {
     let randomCard1 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
-    setPlayerCards([...playerCards, randomCard1])
     let randomCard2 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
-    setDealerCards([...dealerCards, randomCard2, "empty"])
+    setPlayerCards([...playerCards, randomCard1, randomCard2])
+    let randomCard3 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
+    setDealerCards([...dealerCards, randomCard3, "empty"])
   }
+
+  const cards = playerCards.map((card) => {
+    return <Card card={card} key={`${card.Value} ${card.Suit}`}/>
+  })
 
   function hasTokens(betAmount) {
     if (betAmount <= sinatraUser.tokens) {
@@ -92,6 +98,7 @@ function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted 
               hasTokens={hasTokens}
             />
           )}
+          {gameStarted ? cards : null}
         </div>
       ) : null}
     </>
