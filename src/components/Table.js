@@ -1,19 +1,31 @@
 import React, { useState, useEffect } from "react";
 import Chips from "./Chips";
 import BetAmount from "./BetAmount";
+<<<<<<< HEAD
 import Card from "./Card";
 import PlayerInput from "./PlayerInput";
+=======
+import PlayerCard from "./PlayerCard";
+import DealerCard from "./DealerCard"
+>>>>>>> 5f70d457a519d704d65c4013b60b9e832d13efdb
 
-function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted }) {
-  
+function Table({
+  user,
+  sinatraUser,
+  setSinatraUser,
+  setGameStarted,
+  gameStarted,
+  playerCards,
+  dealerCards,
+  setPlayerCards,
+  setDealerCards,
+}) {
   const [betAmount, setBetAmount] = useState(0);
   const [deck, setDeck] = useState([]);
-  const [playerCards, setPlayerCards] = useState([])
-  const [dealerCards, setDealerCards] = useState([])
 
   function createDeck() {
-    let array = []
-    let suits = ["spades", "diamonds", "clubs", "hearts"];
+    let array = [];
+    let suits = ["♠", "♦", "♥", "♣"];
     let values = [
       "A",
       "2",
@@ -29,7 +41,7 @@ function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted 
       "Q",
       "K",
     ];
-    let numbers = [11,2,3,4,5,6,7,8,9,10,10,10,10]
+    let numbers = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
 
     for (let i = 0; i < suits.length; i++) {
       for (let x = 0; x < values.length; x++) {
@@ -37,26 +49,38 @@ function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted 
         array.push(card);
       }
     }
-    setDeck(deck => [...deck, ...array])
+    setDeck((deck) => [...deck, ...array]);
   }
 
   useEffect(() => {
     if (gameStarted === true && playerCards.length === 0) {
-    dealCards()
+      dealCards();
     }
-    
-  },[deck])
+  }, [deck]);
 
   function dealCards() {
-    let randomCard1 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
-    let randomCard2 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
-    setPlayerCards([...playerCards, randomCard1, randomCard2])
-    let randomCard3 = deck.splice(Math.floor(Math.random() * deck.length), 1)[0];
-    setDealerCards([...dealerCards, randomCard3, "empty"])
+    let randomCard1 = deck.splice(
+      Math.floor(Math.random() * deck.length),
+      1
+    )[0];
+    let randomCard2 = deck.splice(
+      Math.floor(Math.random() * deck.length),
+      1
+    )[0];
+    setPlayerCards([...playerCards, randomCard1, randomCard2]);
+    let randomCard3 = deck.splice(
+      Math.floor(Math.random() * deck.length),
+      1
+    )[0];
+    setDealerCards([...dealerCards, randomCard3]);
   }
 
   const cards = playerCards.map((card) => {
-    return <Card card={card} key={`${card.Value} ${card.Suit}`}/>
+    return <PlayerCard card={card} key={`${card.Value} ${card.Suit}`} />;
+  });
+
+  const cards2 = dealerCards.map((card) => {
+    return <DealerCard card={card} key={`${card.Value} ${card.Suit}`} />
   })
 
   function hasTokens(betAmount) {
@@ -99,9 +123,14 @@ function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted 
               hasTokens={hasTokens}
             />
           )}
-          {gameStarted ? cards : null}
         </div>
       ) : null}
+      <div style={{ position: "absolute", display: "flex", left: "150px" }}>
+        {gameStarted ? cards : null}
+      </div>
+      <div style={{ position: "absolute", display: "flex", right: "250px" }}>
+        {gameStarted ? cards2 : null}
+      </div>
     </>
   );
 }

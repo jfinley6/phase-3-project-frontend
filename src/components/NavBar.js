@@ -11,6 +11,10 @@ function NavBar({
   setShowProfile,
   setShowDeleteProfile,
   setGameStarted,
+  playerCards,
+  dealerCards,
+  setPlayerCards,
+  setDealerCards
 }) {
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
@@ -40,6 +44,8 @@ function NavBar({
               style={{ width: "100px", marginRight: "10px" }}
               onClick={() => {
                 setGameStarted(false);
+                setDealerCards([]);
+                setPlayerCards([])
                 auth.signOut();
               }}
               variant="primary"
