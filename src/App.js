@@ -22,7 +22,13 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [playerCards, setPlayerCards] = useState([]);
   const [dealerCards, setDealerCards] = useState([]);
-  const [playerScore, setPlayerScore] = useState(0)
+  const [playerScore, setPlayerScore] = useState(0);
+  const [dealersTurn, setDealersTurn] = useState(false);
+  const [dealerScore, setDealerScore] = useState(false)
+  const [playerTurn, setPlayerTurn] = useState(false)
+  const [isPlayerBusted, setIsPlayerBusted] = useState(false)
+  const [win, setWin] = useState(false)
+  const [lost, setLost] = useState(false)
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -80,6 +86,18 @@ function App() {
           setDealerCards={setDealerCards}
           playerScore={playerScore}
           setPlayerScore={setPlayerScore}
+          dealersTurn={dealersTurn}
+          setDealersTurn={setDealersTurn}
+          dealerScore={dealerScore}
+          setDealerScore={setDealerScore}
+          playerTurn={playerTurn}
+          setPlayerTurn={setPlayerTurn}
+          isPlayerBusted={isPlayerBusted}
+          setIsPlayerBusted={setIsPlayerBusted}
+          win={win}
+          setWin={setWin}
+          lost={lost}
+          setLost={setLost}
         />
         <LoginForm
           show={show}

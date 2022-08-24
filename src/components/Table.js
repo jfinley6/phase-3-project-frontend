@@ -16,7 +16,19 @@ function Table({
   setPlayerCards,
   setDealerCards,
   playerScore,
-  setPlayerScore
+  setPlayerScore,
+  setDealersTurn,
+  dealersTurn,
+  dealerScore,
+  setDealerScore,
+  playerTurn,
+  setPlayerTurn,
+  isPlayerBusted,
+  setIsPlayerBusted,
+  win={win},
+  setWin={setWin},
+  lost={lost},
+  setLost={setLost}
 }) {
   const [betAmount, setBetAmount] = useState(0);
   const [deck, setDeck] = useState([]);
@@ -50,12 +62,20 @@ function Table({
     setDeck((deck) => [...deck, ...array]);
   }
 
+
+
+  useEffect(() => {
+    let dealerScoreAmount = dealerCards.reduce((sum, curr) => {
+      return curr.Number + sum;
+    }, 0);
+    setDealerScore(dealerScoreAmount);
+  }, [dealerCards]);
   useEffect(() => {
     let playerScoreAmount = playerCards.reduce((sum, curr) => {
       return curr.Number + sum;
     }, 0);
-    setPlayerScore(playerScoreAmount)
-  },[playerCards])
+    setPlayerScore(playerScoreAmount);
+  }, [playerCards]);
 
   useEffect(() => {
     if (gameStarted === true && playerCards.length === 0) {
@@ -89,9 +109,13 @@ function Table({
   });
 
   function hasTokens(betAmount) {
+    setGameStarted(false)
+    setPlayerCards([])
+    setDealerCards([])
+    setBetAmount(0)
     if (betAmount === 0) {
-      alert("You can't play for free!")
-      return
+      alert("You can't play for free!");
+      return;
     } else {
       if (betAmount <= sinatraUser.tokens) {
         let newTokens = sinatraUser.tokens - betAmount;
@@ -101,13 +125,13 @@ function Table({
             setSinatraUser(null);
             setSinatraUser(data);
             setGameStarted(true);
+            setPlayerTurn(true)
           })
           .then(() => createDeck());
       } else {
         alert("You dont have enough tokens!");
       }
     }
-    
   }
 
   return (
@@ -134,6 +158,21 @@ function Table({
               setDealerCards={setDealerCards}
               dealerCards={dealerCards}
               playerScore={playerScore}
+              dealersTurn={dealersTurn}
+              setDealersTurn={setDealersTurn}
+              dealerScore={dealerScore}
+              playerTurn={playerTurn}
+              setPlayerTurn={setPlayerTurn}
+              isPlayerBusted={isPlayerBusted}
+              setIsPlayerBusted={setIsPlayerBusted}
+              sinatraUser={sinatraUser}
+              setSinatraUser={setSinatraUser}
+              betAmount={betAmount}
+              setGameStarted={setGameStarted}
+              win={win}
+              setWin={setWin}
+              lost={lost}
+              setLost={setLost}
             />
           ) : (
             <Chips setBetAmount={setBetAmount} />
@@ -147,7 +186,32 @@ function Table({
           )}
         </div>
       ) : null}
-      {gameStarted ? <div style={{position: "absolute", color: "white", fontSize: "1.7em", left: "10vw", top: "30vh"}}>Player Score: {playerScore}</div> : null}
+      {gameStarted ? (
+        <div
+          style={{
+            position: "absolute",
+            color: "white",
+            fontSize: "1.7em",
+            left: "10vw",
+            top: "30vh",
+          }}
+        >
+          Player Score: {playerScore}
+        </div>
+      ) : null}
+      {gameStarted ? (
+        <div
+          style={{
+            position: "absolute",
+            color: "white",
+            fontSize: "1.7em",
+            right: "10vw",
+            top: "30vh",
+          }}
+        >
+          Dealer Score: {dealerScore}
+        </div>
+      ) : null}
       <div style={{ position: "absolute", display: "flex", left: "10vw" }}>
         {gameStarted ? cards : null}
       </div>

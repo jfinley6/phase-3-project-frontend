@@ -11,8 +11,20 @@ function HomePagePicture({
   setPlayerCards,
   dealerCards,
   setDealerCards,
-  playerScore, 
-  setPlayerScore
+  playerScore,
+  setPlayerScore,
+  dealersTurn,
+  setDealersTurn,
+  dealerScore,
+  setDealerScore,
+  playerTurn,
+  setPlayerTurn,
+  isPlayerBusted,
+  setIsPlayerBusted,
+  win,
+  setWin,
+  lost,
+  setLost
 }) {
   return (
     <div className="homePagePicture">
@@ -34,6 +46,18 @@ function HomePagePicture({
         setDealerCards={setDealerCards}
         playerScore={playerScore}
         setPlayerScore={setPlayerScore}
+        dealersTurn={dealersTurn}
+        setDealersTurn={setDealersTurn}
+        dealerScore={dealerScore}
+        setDealerScore={setDealerScore}
+        playerTurn={playerTurn}
+        setPlayerTurn={setPlayerTurn}
+        isPlayerBusted={isPlayerBusted}
+        setIsPlayerBusted={setIsPlayerBusted}
+        win={win}
+        setWin={setWin}
+        lost={lost}
+        setLost={setLost}
       />
     </div>
   );
