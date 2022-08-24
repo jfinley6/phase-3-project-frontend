@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Chips from "./Chips";
 import BetAmount from "./BetAmount";
 import Card from "./Card";
+import PlayerInput from "./PlayerInput";
 
 function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted }) {
   
@@ -90,7 +91,7 @@ function Table({ user, sinatraUser, setSinatraUser, setGameStarted, gameStarted 
             style={{ width: "90vw", height: "75vh" }}
             src="images/Blackjack-bg.jpeg"
           ></img>
-          {gameStarted ? null : <Chips setBetAmount={setBetAmount} />}
+          {gameStarted ? <PlayerInput playerCards={playerCards} /> : <Chips setBetAmount={setBetAmount} />}
           {gameStarted ? null : (
             <BetAmount
               setBetAmount={setBetAmount}
