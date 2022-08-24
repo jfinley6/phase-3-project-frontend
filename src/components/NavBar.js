@@ -73,6 +73,7 @@ function NavBar({
                   Profile
                 </Dropdown.Item>
                 <Dropdown.Item>Blackjack Rules</Dropdown.Item>
+                <Dropdown.Item>Leaderboard</Dropdown.Item>
                 <Dropdown.Item>Icon Store</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
                   Delete Profile

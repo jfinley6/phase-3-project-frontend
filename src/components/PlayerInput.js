@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 
 function PlayerInput({
-  dealersTurn,
-  setDealersTurn,
+  // dealersTurn,
+  // setDealersTurn,
   playerCards,
   deck,
   setPlayerCards,
@@ -14,8 +14,8 @@ function PlayerInput({
   dealerScore,
   playerTurn,
   setPlayerTurn,
-  isPlayerBusted,
-  setIsPlayerBusted,
+  // isPlayerBusted,
+  // setIsPlayerBusted,
   sinatraUser,
   setSinatraUser,
   betAmount,
@@ -26,7 +26,7 @@ function PlayerInput({
   setLost,
   setBetAmount,
   push,
-  setPush
+  setPush,
 }) {
   function hasPushed() {
     let newTokens = sinatraUser.tokens + betAmount;
@@ -38,8 +38,6 @@ function PlayerInput({
         setBetAmount(0);
       });
   }
-  
-
 
   function hasWon() {
     let newTokens = sinatraUser.tokens + betAmount * 2;
@@ -54,8 +52,8 @@ function PlayerInput({
 
   useEffect(() => {
     if (dealerScore > 21) {
-      setWin()
-      hasWon()
+      setWin();
+      hasWon();
       setTimeout(() => {
         setGameStarted(false);
       }, 2000);
@@ -65,7 +63,6 @@ function PlayerInput({
       setTimeout(() => {
         dealCardsDealer();
       }, 2000);
-
     }
     if (playerScore === 21) {
       setWin(true);
@@ -76,7 +73,7 @@ function PlayerInput({
     }
     if (playerScore > 21) {
       setLost(true);
-      setBetAmount(0)
+      setBetAmount(0);
       setTimeout(() => {
         setGameStarted(false);
       }, 2000);
@@ -84,7 +81,7 @@ function PlayerInput({
 
     if (playerScore >= 17 && playerScore < 21) {
       setPlayerTurn(false);
-      if (dealerScore < 17) {
+      if (dealerScore < 18) {
         setTimeout(() => {
           dealCardsDealer();
         }, 2000);
@@ -96,20 +93,20 @@ function PlayerInput({
             setGameStarted(false);
           }, 2000);
         } else if (playerScore === dealerScore) {
-          setPush(true)
-          hasPushed()
+          setPush(true);
+          hasPushed();
           setTimeout(() => {
             setGameStarted(false);
           }, 2000);
         } else if (dealerScore > 21) {
           setWin(true);
-          hasWon()
+          hasWon();
           setTimeout(() => {
             setGameStarted(false);
           }, 2000);
         } else if (dealerScore > playerScore) {
-          setLost(true)
-          setBetAmount(0)
+          setLost(true);
+          setBetAmount(0);
           setTimeout(() => {
             setGameStarted(false);
           }, 2000);
@@ -117,7 +114,7 @@ function PlayerInput({
       }
     }
 
-    if (dealerScore >= 17 && dealerScore < 22) {
+    if (dealerScore >= 18 && dealerScore < 22) {
       if (dealerScore > playerScore) {
         setLost(true);
         setBetAmount(0);
@@ -166,8 +163,9 @@ function PlayerInput({
             <Button
               style={{ width: "100px" }}
               onClick={() => {
-                setPlayerTurn(false)
-                dealCardsDealer()}}
+                setPlayerTurn(false);
+                dealCardsDealer();
+              }}
             >
               Stand
             </Button>
@@ -198,7 +196,7 @@ function PlayerInput({
           You Lost!
         </div>
       ) : null}
-      {push? (
+      {push ? (
         <div
           style={{
             color: "white",
@@ -209,7 +207,7 @@ function PlayerInput({
         >
           You Pushed!
         </div>
-      ) : null }
+      ) : null}
     </>
   );
 }
