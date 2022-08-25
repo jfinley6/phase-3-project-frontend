@@ -40,8 +40,13 @@ function App() {
     setLeaders([]);
     fetch("http://localhost:9292/users")
       .then((res) => res.json())
-      .then((data) => setLeaders(data));
+      .then((data) => {
+        setLeaders(data)});
   }, [sinatraUser]);
+
+  useEffect(() => {
+    console.log("hello")
+  }, [sinatraUser.tokens])
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {

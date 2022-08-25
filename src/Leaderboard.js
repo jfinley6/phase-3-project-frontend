@@ -6,26 +6,25 @@ import Modal from "react-bootstrap/Modal";
 function Leaderboard({ show, handleClose, leaders }) {
   let leaderList = leaders.map((leader) => {
     return (
-      <ListGroup.Item key={leader.id}
+      <ListGroup.Item
+        key={leader.id}
         as="li"
         className="d-flex justify-content-between align-items-start"
       >
         <div className="ms-2 me-auto">
-          <div className="fw-bold"><b>{leader.username}</b></div>
+          <div className="fw-bold">
+            <b>
+              {leader.username} <i className={leader.icons[0].image_url}></i>
+            </b>
+          </div>
           {leader.tokens} tokens
         </div>
-
       </ListGroup.Item>
     );
   });
 
   return (
-    <Modal
-      show={show}
-      onHide={handleClose}
-      className="mt-3"
-      centered
-    >
+    <Modal show={show} onHide={handleClose} className="mt-3" centered>
       <Modal.Header closeButton>
         <Modal.Title>Token Leaderboard</Modal.Title>
       </Modal.Header>

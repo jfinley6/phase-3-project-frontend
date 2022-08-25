@@ -30,7 +30,7 @@ function PlayerInput({
       .then((data) => {
         setSinatraUser(null);
         setSinatraUser(data);
-        setBetAmount(0);
+        setBetAmount(10);
       });
   }
 
@@ -41,7 +41,7 @@ function PlayerInput({
       .then((data) => {
         setSinatraUser(null);
         setSinatraUser(data);
-        setBetAmount(0);
+        setBetAmount(10);
       });
   }
 
@@ -73,7 +73,7 @@ function PlayerInput({
     }
     if (playerScore > 21 && win === false && lost === false) {
       setLost(true);
-      setBetAmount(0);
+      setBetAmount(10);
       setTimeout(() => {
         setGameStarted(false);
       }, 3000);
@@ -119,7 +119,7 @@ function PlayerInput({
           lost === false
         ) {
           setLost(true);
-          setBetAmount(0);
+          setBetAmount(10);
           setTimeout(() => {
             setGameStarted(false);
           }, 3000);
@@ -135,7 +135,7 @@ function PlayerInput({
     ) {
       if (dealerScore > playerScore && win === false && lost === false) {
         setLost(true);
-        setBetAmount(0);
+        setBetAmount(10);
         setTimeout(() => {
           setGameStarted(false);
         }, 3000);

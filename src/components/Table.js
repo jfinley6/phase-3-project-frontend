@@ -32,7 +32,7 @@ function Table({
   push={push},
   setPush={setPush}
 }) {
-  const [betAmount, setBetAmount] = useState(0);
+  const [betAmount, setBetAmount] = useState(10);
   const [deck, setDeck] = useState([]);
 
   function createDeck() {
