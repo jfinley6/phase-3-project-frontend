@@ -6,6 +6,7 @@ import LoginForm from "./LoginForm";
 import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import DeleteProfile from "./DeleteProfile";
+import Leaderboard from "./Leaderboard";
 
 import { auth } from "./firebase";
 
@@ -30,6 +31,15 @@ function App() {
   const [win, setWin] = useState(false)
   const [lost, setLost] = useState(false)
   const [push, setPush] = useState(false)
+  const [leaderboard, setShowLeaderboard] = useState(false)
+  const [leaders, setLeaders] = useState([]);
+
+  useEffect(() => {
+    setLeaders([]);
+    fetch("http://localhost:9292/users")
+      .then((res) => res.json())
+      .then((data) => setLeaders(data));
+  }, [sinatraUser]);
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -56,6 +66,7 @@ function App() {
     setShowSignup(false);
     setShowProfile(false);
     setShowDeleteProfile(false);
+    setShowLeaderboard(false);
   };
 
   return (
@@ -73,6 +84,7 @@ function App() {
         setPlayerCards={setPlayerCards}
         dealerCards={dealerCards}
         setDealerCards={setDealerCards}
+        setShowLeaderboard={setShowLeaderboard}
       />
       <div className="Content">
         <HomePagePicture
@@ -111,6 +123,7 @@ function App() {
           setPassword={setPassword}
           user={user}
         />
+        <Leaderboard show={leaderboard} handleClose={handleClose} leaders={leaders}/>
         <SignupForm
           show={signup}
           handleClose={handleClose}

@@ -22,7 +22,7 @@ function LoginForm({
     handleClose();
   };
   return (
-    <Modal show={show} onHide={handleClose} className="mt-3">
+    <Modal show={show} onHide={handleClose} className="mt-3" centered>
       <Modal.Header closeButton>
         <Modal.Title>Login</Modal.Title>
       </Modal.Header>

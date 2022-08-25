@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import { auth } from "../firebase";
@@ -11,11 +11,11 @@ function NavBar({
   setShowProfile,
   setShowDeleteProfile,
   setGameStarted,
-  playerCards,
-  dealerCards,
   setPlayerCards,
-  setDealerCards
+  setDealerCards,
+  setShowLeaderboard
 }) {
+
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
       <h1 className="text-4xl text-gray-200">Blackjack App</h1>
@@ -73,7 +73,7 @@ function NavBar({
                   Profile
                 </Dropdown.Item>
                 <Dropdown.Item>Blackjack Rules</Dropdown.Item>
-                <Dropdown.Item>Leaderboard</Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowLeaderboard(true)}>Leaderboard</Dropdown.Item>
                 <Dropdown.Item>Icon Store</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
                   Delete Profile

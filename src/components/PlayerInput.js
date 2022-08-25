@@ -52,7 +52,7 @@ function PlayerInput({
 
   useEffect(() => {
     if (dealerScore > 21) {
-      setWin();
+      setWin(true);
       hasWon();
       setTimeout(() => {
         setGameStarted(false);
