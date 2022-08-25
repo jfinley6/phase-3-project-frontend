@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import DeleteProfile from "./DeleteProfile";
 import Leaderboard from "./Leaderboard";
+import BlackJackRules from "./BlackJackRules";
 
 import { auth } from "./firebase";
 import IconStore from "./IconStore";
@@ -35,6 +36,7 @@ function App() {
   const [leaderboard, setShowLeaderboard] = useState(false);
   const [leaders, setLeaders] = useState([]);
   const [showIconStore, setShowIconStore] = useState(false);
+  const [showBlackJackRules, setShowBlackJackRules] = useState(false);
 
   useEffect(() => {
     setLeaders([]);
@@ -70,6 +72,7 @@ function App() {
     setShowDeleteProfile(false);
     setShowLeaderboard(false);
     setShowIconStore(false);
+    setShowBlackJackRules(false)
   };
 
   return (
@@ -89,6 +92,7 @@ function App() {
         setDealerCards={setDealerCards}
         setShowLeaderboard={setShowLeaderboard}
         setShowIconStore={setShowIconStore}
+        setShowBlackJackRules={setShowBlackJackRules}
       />
       <div className="Content">
         <HomePagePicture
@@ -133,6 +137,9 @@ function App() {
           handleClose={handleClose}
           leaders={leaders}
         />
+        <BlackJackRules
+        show={showBlackJackRules}
+        handleClose={handleClose} />
         <SignupForm
           show={signup}
           handleClose={handleClose}

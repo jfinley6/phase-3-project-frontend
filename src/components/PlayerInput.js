@@ -34,6 +34,29 @@ function PlayerInput({
       });
   }
 
+  // function doubleDown() {
+  //   let doubleBet = betAmount * 2
+  //   setBetAmount(doubleBet)
+  // }
+
+  function doubleDown() { 
+    let doubleBet = betAmount * 2
+    setBetAmount(doubleBet)
+    let newTokens = sinatraUser.tokens - betAmount;
+    console.log(sinatraUser.tokens)
+    fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSinatraUser(data);
+      })
+      debugger
+  }
+    
+  
+
+  
+  
+
   function hasWon() {
     let newTokens = sinatraUser.tokens + betAmount * 2;
     fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
@@ -187,6 +210,17 @@ function PlayerInput({
             >
               Stand
             </Button>
+            <Button
+              style={{ width: "100px" }}
+              onClick={() => {
+                doubleDown();
+                dealCardsPlayer()
+                setPlayerTurn(false);
+                dealCardsDealer();
+              }}
+            >
+              Double
+            </Button>
           </>
         ) : null}
       </div>
@@ -229,5 +263,6 @@ function PlayerInput({
     </>
   );
 }
+
 
 export default PlayerInput;

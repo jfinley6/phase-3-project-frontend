@@ -3,6 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+
 function Leaderboard({ show, handleClose, leaders }) {
   let leaderList = leaders.map((leader) => {
     return (
