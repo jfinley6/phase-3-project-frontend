@@ -173,13 +173,13 @@ function PlayerInput({
         {playerTurn ? (
           <>
             <Button
-              style={{ width: "100px" }}
+              style={{ width: "110px" }}
               onClick={() => dealCardsPlayer()}
             >
               Hit
             </Button>
             <Button
-              style={{ width: "100px" }}
+              style={{ width: "110px" }}
               onClick={() => {
                 setPlayerTurn(false);
                 dealCardsDealer();

@@ -14,8 +14,22 @@ function NavBar({
   setPlayerCards,
   setDealerCards,
   setShowLeaderboard,
-  setShowIconStore
+  setShowIconStore,
+  setSinatraUser
 }) {
+
+  function addTokens() {
+    if (sinatraUser.tokens < 10) {
+      fetch(`http://localhost:9292/users/${sinatraUser.email}/100`)
+        .then((res) => res.json())
+        .then((data) => {
+          setSinatraUser(null)
+          setSinatraUser(data)
+        });
+    }
+  }
+
+ console.log(sinatraUser)
 
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
@@ -79,6 +93,9 @@ function NavBar({
                 <Dropdown.Item onClick={() => setShowIconStore(true)}>Profile Icon</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
                   Delete Profile
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => addTokens()}>
+                  Add Tokens
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

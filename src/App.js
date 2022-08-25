@@ -45,10 +45,6 @@ function App() {
   }, [sinatraUser]);
 
   useEffect(() => {
-    console.log("hello")
-  }, [sinatraUser.tokens])
-
-  useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         setUser(authUser);
@@ -94,6 +90,7 @@ function App() {
         setDealerCards={setDealerCards}
         setShowLeaderboard={setShowLeaderboard}
         setShowIconStore={setShowIconStore}
+        setSinatraUser={setSinatraUser}
       />
       <div className="Content">
         <HomePagePicture
