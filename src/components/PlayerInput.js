@@ -1,10 +1,7 @@
-import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 
 function PlayerInput({
-  // dealersTurn,
-  // setDealersTurn,
   playerCards,
   deck,
   setPlayerCards,
@@ -14,8 +11,6 @@ function PlayerInput({
   dealerScore,
   playerTurn,
   setPlayerTurn,
-  // isPlayerBusted,
-  // setIsPlayerBusted,
   sinatraUser,
   setSinatraUser,
   betAmount,
@@ -51,76 +46,99 @@ function PlayerInput({
   }
 
   useEffect(() => {
-    if (dealerScore > 21) {
+    if (dealerScore > 21 && win === false && lost === false) {
       setWin(true);
       hasWon();
       setTimeout(() => {
         setGameStarted(false);
-      }, 2500);
+      }, 3000);
     }
 
-    if (playerScore < 17 && playerTurn === false) {
+    if (
+      dealerScore < 18 &&
+      playerTurn === false &&
+      win === false &&
+      lost === false
+    ) {
       setTimeout(() => {
         dealCardsDealer();
       }, 2000);
     }
-    if (playerScore === 21) {
+    if (playerScore === 21 && win === false && lost === false) {
       setWin(true);
       hasWon();
       setTimeout(() => {
         setGameStarted(false);
-      }, 2500);
+      }, 3000);
     }
-    if (playerScore > 21) {
+    if (playerScore > 21 && win === false && lost === false) {
       setLost(true);
       setBetAmount(0);
       setTimeout(() => {
         setGameStarted(false);
-      }, 2500);
+      }, 3000);
     }
 
-    if (playerScore >= 17 && playerScore < 21) {
+    if (
+      playerScore >= 18 &&
+      playerScore < 21 &&
+      win === false &&
+      lost === false
+    ) {
       setPlayerTurn(false);
-      if (dealerScore < 18) {
+      if (dealerScore < 17 && lost === false && win === false) {
         setTimeout(() => {
           dealCardsDealer();
         }, 2000);
       } else {
-        if (playerScore > dealerScore) {
+        if (playerScore > dealerScore && win === false && lost === false) {
           setWin(true);
           hasWon();
           setTimeout(() => {
             setGameStarted(false);
-          }, 2500);
-        } else if (playerScore === dealerScore) {
+          }, 3000);
+        } else if (
+          playerScore === dealerScore &&
+          win === false &&
+          lost === false
+        ) {
           setPush(true);
           hasPushed();
           setTimeout(() => {
             setGameStarted(false);
-          }, 2500);
-        } else if (dealerScore > 21) {
+          }, 3000);
+        } else if (dealerScore > 21 && win === false && lost === false) {
           setWin(true);
           hasWon();
           setTimeout(() => {
             setGameStarted(false);
-          }, 2500);
-        } else if (dealerScore > playerScore) {
+          }, 3000);
+        } else if (
+          dealerScore > playerScore &&
+          win === false &&
+          lost === false
+        ) {
           setLost(true);
           setBetAmount(0);
           setTimeout(() => {
             setGameStarted(false);
-          }, 2500);
+          }, 3000);
         }
       }
     }
 
-    if (dealerScore >= 18 && dealerScore < 22) {
-      if (dealerScore > playerScore) {
+    if (
+      dealerScore >= 18 &&
+      dealerScore < 22 &&
+      win === false &&
+      lost === false
+    ) {
+      if (dealerScore > playerScore && win === false && lost === false) {
         setLost(true);
         setBetAmount(0);
         setTimeout(() => {
           setGameStarted(false);
-        }, 2500);
+        }, 3000);
       }
     }
   }, [playerScore, dealerScore]);
@@ -177,8 +195,8 @@ function PlayerInput({
           style={{
             color: "white",
             position: "absolute",
-            top: "5vh",
-            fontSize: "3em",
+            top: "15vh",
+            fontSize: "2.5em",
           }}
         >
           You won!
@@ -189,8 +207,8 @@ function PlayerInput({
           style={{
             color: "white",
             position: "absolute",
-            top: "5vh",
-            fontSize: "3em",
+            top: "15vh",
+            fontSize: "2.5em",
           }}
         >
           You Lost!
@@ -201,8 +219,8 @@ function PlayerInput({
           style={{
             color: "white",
             position: "absolute",
-            top: "5vh",
-            fontSize: "3em",
+            top: "15vh",
+            fontSize: "2.5em",
           }}
         >
           You Pushed!

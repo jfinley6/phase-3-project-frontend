@@ -57,6 +57,7 @@ function NavBar({
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span>
                   <i
+                  style={{width: "25px"}}
                     className={
                       sinatraUser === null
                         ? null
