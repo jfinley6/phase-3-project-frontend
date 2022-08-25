@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 function Profile({show, handleClose, sinatraUser}) {
 
   return (
-    <Modal show={show} onHide={handleClose} className="mt-3">
+    <Modal centered show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Profile</Modal.Title>
       </Modal.Header>

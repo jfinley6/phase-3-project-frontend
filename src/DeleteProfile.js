@@ -16,7 +16,7 @@ function DeleteProfile({show, handleClose, setGameStarted, playerCards, dealerCa
     }
 
   return (
-    <Modal show={show} onHide={handleClose} className="mt-3">
+    <Modal centered show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Delete Profile</Modal.Title>
       </Modal.Header>

@@ -2,13 +2,19 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { ListGroupItem } from "react-bootstrap";
 
 function Leaderboard({ show, handleClose, leaders }) {
   let leaderList = leaders.map((leader) => {
     return (
-      <ListGroup.Item key={leader.id}>
-        {leader.username} {leader.tokens}
+      <ListGroup.Item key={leader.id}
+        as="li"
+        className="d-flex justify-content-between align-items-start"
+      >
+        <div className="ms-2 me-auto">
+          <div className="fw-bold"><b>{leader.username}</b></div>
+          {leader.tokens} tokens
+        </div>
+
       </ListGroup.Item>
     );
   });

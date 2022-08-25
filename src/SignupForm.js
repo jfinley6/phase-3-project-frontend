@@ -45,7 +45,7 @@ function SignupForm({
   };
 
   return (
-    <Modal show={show} onHide={handleClose} className="mt-3">
+    <Modal centered show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
         <Modal.Title>Signup</Modal.Title>
       </Modal.Header>
