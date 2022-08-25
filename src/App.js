@@ -9,6 +9,7 @@ import DeleteProfile from "./DeleteProfile";
 import Leaderboard from "./Leaderboard";
 
 import { auth } from "./firebase";
+import IconStore from "./IconStore";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -25,14 +26,15 @@ function App() {
   const [dealerCards, setDealerCards] = useState([]);
   const [playerScore, setPlayerScore] = useState(0);
   const [dealersTurn, setDealersTurn] = useState(false);
-  const [dealerScore, setDealerScore] = useState(false)
-  const [playerTurn, setPlayerTurn] = useState(false)
-  const [isPlayerBusted, setIsPlayerBusted] = useState(false)
-  const [win, setWin] = useState(false)
-  const [lost, setLost] = useState(false)
-  const [push, setPush] = useState(false)
-  const [leaderboard, setShowLeaderboard] = useState(false)
+  const [dealerScore, setDealerScore] = useState(false);
+  const [playerTurn, setPlayerTurn] = useState(false);
+  const [isPlayerBusted, setIsPlayerBusted] = useState(false);
+  const [win, setWin] = useState(false);
+  const [lost, setLost] = useState(false);
+  const [push, setPush] = useState(false);
+  const [leaderboard, setShowLeaderboard] = useState(false);
   const [leaders, setLeaders] = useState([]);
+  const [showIconStore, setShowIconStore] = useState(false);
 
   useEffect(() => {
     setLeaders([]);
@@ -67,6 +69,7 @@ function App() {
     setShowProfile(false);
     setShowDeleteProfile(false);
     setShowLeaderboard(false);
+    setShowIconStore(false);
   };
 
   return (
@@ -85,6 +88,7 @@ function App() {
         dealerCards={dealerCards}
         setDealerCards={setDealerCards}
         setShowLeaderboard={setShowLeaderboard}
+        setShowIconStore={setShowIconStore}
       />
       <div className="Content">
         <HomePagePicture
@@ -123,7 +127,12 @@ function App() {
           setPassword={setPassword}
           user={user}
         />
-        <Leaderboard show={leaderboard} handleClose={handleClose} leaders={leaders}/>
+        <IconStore show={showIconStore} handleClose={handleClose} sinatraUser={sinatraUser} setSinatraUser={setSinatraUser}/>
+        <Leaderboard
+          show={leaderboard}
+          handleClose={handleClose}
+          leaders={leaders}
+        />
         <SignupForm
           show={signup}
           handleClose={handleClose}

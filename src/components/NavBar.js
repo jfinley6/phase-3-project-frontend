@@ -13,7 +13,8 @@ function NavBar({
   setGameStarted,
   setPlayerCards,
   setDealerCards,
-  setShowLeaderboard
+  setShowLeaderboard,
+  setShowIconStore
 }) {
 
   return (
@@ -74,7 +75,7 @@ function NavBar({
                 </Dropdown.Item>
                 <Dropdown.Item>Blackjack Rules</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowLeaderboard(true)}>Leaderboard</Dropdown.Item>
-                <Dropdown.Item>Icon Store</Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowIconStore(true)}>Profile Icon</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
                   Delete Profile
                 </Dropdown.Item>

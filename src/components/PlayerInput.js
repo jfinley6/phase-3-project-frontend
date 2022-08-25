@@ -56,7 +56,7 @@ function PlayerInput({
       hasWon();
       setTimeout(() => {
         setGameStarted(false);
-      }, 2000);
+      }, 2500);
     }
 
     if (playerScore < 17 && playerTurn === false) {
@@ -69,14 +69,14 @@ function PlayerInput({
       hasWon();
       setTimeout(() => {
         setGameStarted(false);
-      }, 2000);
+      }, 2500);
     }
     if (playerScore > 21) {
       setLost(true);
       setBetAmount(0);
       setTimeout(() => {
         setGameStarted(false);
-      }, 2000);
+      }, 2500);
     }
 
     if (playerScore >= 17 && playerScore < 21) {
@@ -91,25 +91,25 @@ function PlayerInput({
           hasWon();
           setTimeout(() => {
             setGameStarted(false);
-          }, 2000);
+          }, 2500);
         } else if (playerScore === dealerScore) {
           setPush(true);
           hasPushed();
           setTimeout(() => {
             setGameStarted(false);
-          }, 2000);
+          }, 2500);
         } else if (dealerScore > 21) {
           setWin(true);
           hasWon();
           setTimeout(() => {
             setGameStarted(false);
-          }, 2000);
+          }, 2500);
         } else if (dealerScore > playerScore) {
           setLost(true);
           setBetAmount(0);
           setTimeout(() => {
             setGameStarted(false);
-          }, 2000);
+          }, 2500);
         }
       }
     }
@@ -120,7 +120,7 @@ function PlayerInput({
         setBetAmount(0);
         setTimeout(() => {
           setGameStarted(false);
-        }, 2000);
+        }, 2500);
       }
     }
   }, [playerScore, dealerScore]);
