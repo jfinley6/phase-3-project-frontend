@@ -3,12 +3,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { auth } from "./firebase";
 
-function DeleteProfile({show, handleClose, setGameStarted, playerCards, dealerCards, setDealerCards, setPlayerCards}) {
+function DeleteProfile({show, handleClose, setGameStarted, playerCards, dealerCards, setDealerCards, setPlayerCards, sinatraUser}) {
+
 
     function deleteProfile() {
-        //  fetch(`http://localhost:9292/users/${sinatraUser.id}`, {
-        //    method: "DELETE",
-        //  }).then(() => auth.signOut());
+         fetch(`http://localhost:9292/users/${sinatraUser.email}`, {
+           method: "DELETE",
+         }).then(() => {
+          setPlayerCards([])
+          setDealerCards([])
+          setGameStarted(false)
+          auth.signOut()});
         setDealerCards([])
         setPlayerCards([])
         setGameStarted(false)

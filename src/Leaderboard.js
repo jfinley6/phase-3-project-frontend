@@ -7,7 +7,7 @@ function Leaderboard({ show, handleClose, leaders }) {
   let leaderList = leaders.map((leader) => {
     return (
       <ListGroup.Item
-        key={leader.id}
+        key={leader.id + leader.username}
         as="li"
         className="d-flex justify-content-between align-items-start"
       >
