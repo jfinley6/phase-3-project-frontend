@@ -13,12 +13,24 @@ function IconStore({ show, handleClose, sinatraUser, setSinatraUser }) {
       .then((res) => res.json())
       .then((data) => setIcons(data));
   }, []);
-
+  
   let storeIcons = icons.map((icon) => {
     return (
-      <Col key={icon.id} xs={6} md={4} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-        <i onClick={() => changeIcon(icon.image_url, icon.name)} className={icon.image_url + " fa-2x"}></i>
-        <div style={{marginBottom: "5px"}}>{icon.name}</div>
+      <Col
+        key={icon.id}
+        xs={6}
+        md={4}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <i
+          onClick={() => changeIcon(icon.image_url, icon.name)}
+          className={icon.image_url + " fa-2x"}
+        ></i>
+        <div style={{ marginBottom: "5px" }}>{icon.name}</div>
       </Col>
     );
   });

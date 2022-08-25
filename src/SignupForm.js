@@ -20,6 +20,18 @@ function SignupForm({
 }) {
   const signUp = (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters")
+      return
+    }
+    if (email.indexOf("@") === -1) {
+      alert("Your email is not correct")
+      return
+    }
+    if (email.indexOf(".com") === -1) {
+      alert("Your email is not correct")
+      return
+    }
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
@@ -40,7 +52,7 @@ function SignupForm({
           displayName: username,
         });
       })
-      .catch((error) => alert(error.message));
+
     handleClose();
   };
 
