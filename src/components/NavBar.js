@@ -29,7 +29,6 @@ function NavBar({
     }
   }
 
- console.log(sinatraUser)
 
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">

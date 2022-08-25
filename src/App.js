@@ -44,6 +44,7 @@ function App() {
         setLeaders(data)});
   }, [sinatraUser]);
 
+
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
