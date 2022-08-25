@@ -7,6 +7,7 @@ import Profile from "./Profile";
 import SignupForm from "./SignupForm";
 import DeleteProfile from "./DeleteProfile";
 import Leaderboard from "./Leaderboard";
+import BlackJackRules from "./BlackJackRules";
 
 import { auth } from "./firebase";
 import IconStore from "./IconStore";
@@ -35,6 +36,7 @@ function App() {
   const [leaderboard, setShowLeaderboard] = useState(false);
   const [leaders, setLeaders] = useState([]);
   const [showIconStore, setShowIconStore] = useState(false);
+  const [showBlackJackRules, setShowBlackJackRules] = useState(false)
 
   useEffect(() => {
     setLeaders([]);
@@ -72,6 +74,7 @@ function App() {
     setShowDeleteProfile(false);
     setShowLeaderboard(false);
     setShowIconStore(false);
+    setShowBlackJackRules(false)
   };
 
   return (
@@ -92,6 +95,7 @@ function App() {
         setShowLeaderboard={setShowLeaderboard}
         setShowIconStore={setShowIconStore}
         setSinatraUser={setSinatraUser}
+        setShowBlackJackRules={setShowBlackJackRules}
       />
       <div className="Content">
         <HomePagePicture
@@ -130,7 +134,13 @@ function App() {
           setPassword={setPassword}
           user={user}
         />
-        <IconStore show={showIconStore} handleClose={handleClose} sinatraUser={sinatraUser} setSinatraUser={setSinatraUser}/>
+        <IconStore
+          show={showIconStore}
+          handleClose={handleClose}
+          sinatraUser={sinatraUser}
+          setSinatraUser={setSinatraUser}
+        />
+
         <Leaderboard
           show={leaderboard}
           handleClose={handleClose}
@@ -162,6 +172,7 @@ function App() {
           dealerCards={dealerCards}
           setDealerCards={setDealerCards}
         />
+      <BlackJackRules show={showBlackJackRules} handleClose={handleClose} />
       </div>
     </div>
   );

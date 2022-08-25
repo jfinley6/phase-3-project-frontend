@@ -15,7 +15,8 @@ function NavBar({
   setDealerCards,
   setShowLeaderboard,
   setShowIconStore,
-  setSinatraUser
+  setSinatraUser,
+  setShowBlackJackRules
 }) {
 
   function addTokens() {
@@ -87,7 +88,7 @@ function NavBar({
                 <Dropdown.Item onClick={() => setShowProfile(true)}>
                   Profile
                 </Dropdown.Item>
-                <Dropdown.Item>Blackjack Rules</Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowBlackJackRules(true)}>Blackjack Rules</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowLeaderboard(true)}>Leaderboard</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowIconStore(true)}>Profile Icon</Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
