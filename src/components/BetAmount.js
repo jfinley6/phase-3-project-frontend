@@ -7,7 +7,7 @@ function BetAmount({ betAmount, setBetAmount, hasTokens }) {
       <img
         style={{
           position: "absolute",
-          top: "180px",
+          top: "20px",
           width: "200px"
         }}
         src="images/819-8194226_blackjack-instant-game-logo-graphic-design.png"
