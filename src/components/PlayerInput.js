@@ -62,7 +62,7 @@ function PlayerInput({
     ) {
       setTimeout(() => {
         dealCardsDealer();
-      }, 2000);
+      }, 1000);
     }
     if (playerScore === 21 && win === false && lost === false) {
       setWin(true);
@@ -89,7 +89,7 @@ function PlayerInput({
       if (dealerScore < 17 && lost === false && win === false) {
         setTimeout(() => {
           dealCardsDealer();
-        }, 2000);
+        }, 1000);
       } else {
         if (playerScore > dealerScore && win === false && lost === false) {
           setWin(true);

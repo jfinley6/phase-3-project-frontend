@@ -20,9 +20,11 @@ function Chip({ setBetAmount }) {
       >
         <img
           style={{ width: "50px", height: "50px" }}
-          src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
+          src="images/dg-designer-0e9d935f147701852434523765510742843.png"
         />
-        <div style={{ position: "absolute", top: "30%", left: "31%" }}><b>10</b></div>
+        <div style={{ position: "absolute", top: "30%", left: "31%" }}>
+          <b>10</b>
+        </div>
       </div>
       <div
         onClick={() => setBetAmount((count) => count + 25)}
@@ -31,9 +33,11 @@ function Chip({ setBetAmount }) {
       >
         <img
           style={{ width: "50px", height: "50px" }}
-          src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
+          src="images/dg-designer-0e9d935f147701852434523765510742843.png"
         />
-        <div style={{ position: "absolute", top: "30%", left: "29%" }}><b>25</b></div>
+        <div style={{ position: "absolute", top: "30%", left: "29%" }}>
+          <b>25</b>
+        </div>
       </div>
       <div
         onClick={() => setBetAmount((count) => count + 100)}
@@ -42,9 +46,11 @@ function Chip({ setBetAmount }) {
       >
         <img
           style={{ width: "50px", height: "50px" }}
-          src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
+          src="images/dg-designer-0e9d935f147701852434523765510742843.png"
         />
-        <div style={{ position: "absolute", top: "30%", left: "21%" }}><b>100</b></div>
+        <div style={{ position: "absolute", top: "30%", left: "21%" }}>
+          <b>100</b>
+        </div>
       </div>
       <div
         onClick={() => setBetAmount((count) => count + 500)}
@@ -53,9 +59,11 @@ function Chip({ setBetAmount }) {
       >
         <img
           style={{ width: "50px", height: "50px" }}
-          src="images/dg-designer-0e9d935f147701852434523765510742843.png.crdownload"
+          src="images/dg-designer-0e9d935f147701852434523765510742843.png"
         />
-        <div style={{ position: "absolute", top: "30%", left: "18%" }}><b>500</b></div>
+        <div style={{ position: "absolute", top: "30%", left: "18%" }}>
+          <b>500</b>
+        </div>
       </div>
     </div>
   );
