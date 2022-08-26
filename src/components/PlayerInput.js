@@ -199,7 +199,7 @@ function PlayerInput({
             fontSize: "2.5em",
           }}
         >
-          You won!
+          You won {betAmount * 2} tokens!
         </div>
       ) : null}
       {lost ? (

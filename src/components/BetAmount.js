@@ -4,11 +4,19 @@ import Button from "react-bootstrap/Button";
 function BetAmount({ betAmount, setBetAmount, hasTokens }) {
   return (
     <>
+      <img
+        style={{
+          position: "absolute",
+          top: "180px",
+          width: "200px"
+        }}
+        src="images/819-8194226_blackjack-instant-game-logo-graphic-design.png"
+      ></img>
       <Button
         onClick={() => hasTokens(betAmount)}
         style={{
           position: "absolute",
-          top: "69%",
+          top: "68%",
         }}
         variant="primary"
       >
@@ -32,10 +40,10 @@ function BetAmount({ betAmount, setBetAmount, hasTokens }) {
         onClick={() => setBetAmount(0)}
         style={{
           position: "absolute",
-          top: "86%",
+          top: "87%",
           width: "45px",
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
         variant="primary"
       >

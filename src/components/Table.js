@@ -151,7 +151,7 @@ function Table({
           <img
             className="rounded-2xl"
             style={{ width: "90vw", height: "75vh" }}
-            src="images/Blackjack-bg.jpeg"
+            src="images/poker-table-background-green-color_47243-1068.webp"
           ></img>
           {gameStarted ? (
             <PlayerInput
@@ -199,7 +199,7 @@ function Table({
             color: "white",
             fontSize: "1.7em",
             left: "10vw",
-            top: "30vh",
+            top: "20vh",
           }}
         >
           Player Score: {playerScore}
@@ -212,7 +212,7 @@ function Table({
             color: "white",
             fontSize: "1.7em",
             right: "10vw",
-            top: "30vh",
+            top: "20vh",
           }}
         >
           Dealer Score: {dealerScore}

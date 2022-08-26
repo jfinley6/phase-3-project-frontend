@@ -29,7 +29,11 @@ function HomePagePicture({
   setPush
 }) {
   return (
-    <div className="homePagePicture">
+    <div style={{position: "relative"}} className="homePagePicture">
+      <img
+        style={{position: "absolute", maxHeight: "60vh", maxWidth: "60vw", minWidth: "100px" }}
+        src="images/819-8194226_blackjack-instant-game-logo-graphic-design.png"
+      ></img>
       <img
         className="rounded-2xl"
         src="images/how-to-play-blackjack-lead.jpeg"

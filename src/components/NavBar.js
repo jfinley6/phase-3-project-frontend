@@ -33,7 +33,14 @@ function NavBar({
 
   return (
     <header className="flex items-center justify-between bg-gray-800 p-6 w-full">
-      <h1 className="text-4xl text-gray-200">Blackjack App</h1>
+      <img
+        style={{ maxHeight: "125px", maxWidth: "200px" }}
+        src="images/PNGPIX-COM-Playing-Card-Symbols-PNG-Transparent-Image.png"
+      ></img>
+      <h1
+        style={{ maxHeight: "100%", maxWidth: "100%" }}
+        className="text-4xl text-gray-200"
+      ></h1>
       <div>
         {user ? null : (
           <>
@@ -60,7 +67,7 @@ function NavBar({
               onClick={() => {
                 setGameStarted(false);
                 setDealerCards([]);
-                setPlayerCards([])
+                setPlayerCards([]);
                 auth.signOut();
               }}
               variant="primary"
@@ -71,7 +78,7 @@ function NavBar({
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span>
                   <i
-                  style={{width: "25px"}}
+                    style={{ width: "25px" }}
                     className={
                       sinatraUser === null
                         ? null
@@ -88,9 +95,15 @@ function NavBar({
                 <Dropdown.Item onClick={() => setShowProfile(true)}>
                   Profile
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => setShowBlackJackRules(true)}>Blackjack Rules</Dropdown.Item>
-                <Dropdown.Item onClick={() => setShowLeaderboard(true)}>Leaderboard</Dropdown.Item>
-                <Dropdown.Item onClick={() => setShowIconStore(true)}>Profile Icon</Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowBlackJackRules(true)}>
+                  Blackjack Rules
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowLeaderboard(true)}>
+                  Leaderboard
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => setShowIconStore(true)}>
+                  Profile Icon
+                </Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
                   Delete Profile
                 </Dropdown.Item>
