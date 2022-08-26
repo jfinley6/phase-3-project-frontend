@@ -14,7 +14,7 @@ function Leaderboard({ show, handleClose, leaders }) {
         <div className="ms-2 me-auto">
           <div className="fw-bold">
             <b>
-              {leader.username} <i className={leader.icons[0].image_url}></i>
+              {leader.username} <i className={leader.icons[0].image_url + " fa-lg"}></i>
             </b>
           </div>
           {leader.tokens} tokens
@@ -26,7 +26,7 @@ function Leaderboard({ show, handleClose, leaders }) {
   return (
     <Modal show={show} onHide={handleClose} className="mt-3" centered>
       <Modal.Header closeButton>
-        <Modal.Title>Token Leaderboard</Modal.Title>
+        <Modal.Title><b>Token Leaderboard</b></Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ListGroup as="ol" numbered>
@@ -35,7 +35,7 @@ function Leaderboard({ show, handleClose, leaders }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          <b>Close</b>
         </Button>
       </Modal.Footer>
     </Modal>

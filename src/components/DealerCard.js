@@ -18,14 +18,7 @@ function PlayerCard({ card }) {
           {Value}
         </b>
       </div>
-      <div
-        style={{
-          color: Suit === "♦" || Suit === "♥" ? "red" : null,
-          fontSize: "1.5em",
-        }}
-      >
-        {Suit}
-      </div>
+      <div style={{ color: Suit === "♦" || Suit === "♥" ? "red" : null, fontSize: "1.5em" }}>{Suit}</div>
     </div>
   );
 }

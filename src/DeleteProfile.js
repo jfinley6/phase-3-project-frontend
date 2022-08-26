@@ -23,17 +23,17 @@ function DeleteProfile({show, handleClose, setGameStarted, playerCards, dealerCa
   return (
     <Modal centered show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
-        <Modal.Title>Delete Profile</Modal.Title>
+        <Modal.Title><b>Delete Profile</b></Modal.Title>
       </Modal.Header>
-      <Modal.Body>Are you sure? Deleting your profile is permanent.</Modal.Body>
+      <Modal.Body><b>Are you sure? Deleting your profile is permanent.</b></Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          <b>Close</b>
         </Button>
         <Button variant="danger" onClick={() => {
           deleteProfile()
           handleClose()}}>
-          Delete
+          <b>Delete</b>
         </Button>
       </Modal.Footer>
     </Modal>

@@ -59,12 +59,12 @@ function SignupForm({
   return (
     <Modal centered show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
-        <Modal.Title>Signup</Modal.Title>
+        <Modal.Title><b>Signup</b></Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput">
-            <Form.Label>Username</Form.Label>
+            <Form.Label><b>Username</b></Form.Label>
             <Form.Control
               onChange={(event) => setUsername(event.target.value)}
               type="username"
@@ -73,7 +73,7 @@ function SignupForm({
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label><b>Email address</b></Form.Label>
             <Form.Control
               onChange={(event) => setEmail(event.target.value)}
               type="email"
@@ -81,7 +81,7 @@ function SignupForm({
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-            <Form.Label>Password</Form.Label>
+            <Form.Label><b>Password</b></Form.Label>
             <Form.Control
               onChange={(event) => setPassword(event.target.value)}
               type="password"
@@ -92,10 +92,10 @@ function SignupForm({
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          <b>Close</b>
         </Button>
         <Button variant="primary" onClick={signUp} type="submit">
-          Submit
+          <b>Submit</b>
         </Button>
       </Modal.Footer>
     </Modal>

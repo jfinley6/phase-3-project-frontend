@@ -7,7 +7,7 @@ function Profile({show, handleClose, sinatraUser}) {
   return (
     <Modal centered show={show} onHide={handleClose} className="mt-3">
       <Modal.Header closeButton>
-        <Modal.Title>Profile</Modal.Title>
+        <Modal.Title><b>Profile</b></Modal.Title>
       </Modal.Header>
       <Modal.Body>
         USERNAME: <b>{sinatraUser ? sinatraUser.username : null}</b>
@@ -20,7 +20,7 @@ function Profile({show, handleClose, sinatraUser}) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={(event) => handleClose(event)}>
-          Close
+          <b>Close</b>
         </Button>
       </Modal.Footer>
     </Modal>

@@ -49,14 +49,14 @@ function NavBar({
               onClick={() => setShow(true)}
               variant="primary"
             >
-              Login
+              <b>Login</b>
             </Button>
             <Button
               style={{ width: "100px" }}
               onClick={() => setShowSignup(true)}
               variant="primary"
             >
-              Signup
+              <b>Signup</b>
             </Button>
           </>
         )}
@@ -72,7 +72,7 @@ function NavBar({
               }}
               variant="primary"
             >
-              Logout
+              <b>Logout</b>
             </Button>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -82,33 +82,35 @@ function NavBar({
                     className={
                       sinatraUser === null
                         ? null
-                        : sinatraUser.icons[0].image_url
+                        : sinatraUser.icons[0].image_url + " fa-lg"
                     }
                   ></i>
-                  {sinatraUser === null
-                    ? null
-                    : ` • ${sinatraUser.tokens} tokens`}
+                  <b>
+                    {sinatraUser === null
+                      ? null
+                      : ` • ${sinatraUser.tokens} tokens`}
+                  </b>
                 </span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
                 <Dropdown.Item onClick={() => setShowProfile(true)}>
-                  Profile
+                  <b>Profile</b>
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowBlackJackRules(true)}>
-                  Blackjack Rules
+                  <b>Blackjack Rules</b>
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowLeaderboard(true)}>
-                  Leaderboard
+                  <b>Leaderboard</b>
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowIconStore(true)}>
-                  Profile Icon
+                  <b>Profile Icon</b>
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => setShowDeleteProfile(true)}>
-                  Delete Profile
+                  <b>Delete Profile</b>
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => addTokens()}>
-                  Add Tokens
+                  <b>Add Tokens</b>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

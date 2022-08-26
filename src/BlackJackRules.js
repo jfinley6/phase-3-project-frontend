@@ -7,7 +7,7 @@ function BlackJackRules({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose} className="mt-3" centered>
       <Modal.Header closeButton>
-        <Modal.Title>Basic Blackjack Rules </Modal.Title>
+        <Modal.Title><b>Basic Blackjack Rules</b></Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ListGroup>
@@ -42,7 +42,7 @@ function BlackJackRules({ show, handleClose }) {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Close
+          <b>Close</b>
         </Button>
       </Modal.Footer>
     </Modal>

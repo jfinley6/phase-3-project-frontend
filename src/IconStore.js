@@ -13,8 +13,8 @@ function IconStore({ show, handleClose, sinatraUser, setSinatraUser }) {
       .then((res) => res.json())
       .then((data) => setIcons(data));
   }, []);
-  
-  let storeIcons = icons.map((icon) => {
+
+  let storeIcons = icons.map((icon, id) => {
     return (
       <Col
         key={icon.id}
@@ -28,28 +28,29 @@ function IconStore({ show, handleClose, sinatraUser, setSinatraUser }) {
       >
         <i
           onClick={() => changeIcon(icon.image_url, icon.name)}
-          className={icon.image_url + " fa-2x"}
+          className={icon.image_url + " fa-3x"}
         ></i>
-        <div style={{ marginBottom: "5px" }}>{icon.name}</div>
+        <div style={{ marginBottom: "5px" }}>
+          <b>{icon.name}</b>
+        </div>
       </Col>
     );
   });
 
-  function changeIcon(image, name) {   
-    
+  function changeIcon(image, name) {
     fetch(`http://localhost:9292/icon/${sinatraUser.email}/${name}/${image}`)
-    .then(res => res.json())
-    .then(data => {
-        setSinatraUser(null)
-        setSinatraUser(data)
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        setSinatraUser(null);
+        setSinatraUser(data);
+      });
   }
 
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Customize User Icon
+          <b>Customize User Icon</b>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="show-grid">
@@ -58,7 +59,7 @@ function IconStore({ show, handleClose, sinatraUser, setSinatraUser }) {
         </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleClose}>Close</Button>
+        <Button onClick={handleClose}><b>Close</b></Button>
       </Modal.Footer>
     </Modal>
   );
