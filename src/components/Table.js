@@ -202,7 +202,7 @@ function Table({
             top: "20vh",
           }}
         >
-          Player Score: {playerScore}
+          <b>Player Score: {playerScore}</b>
         </div>
       ) : null}
       {gameStarted ? (
@@ -215,7 +215,7 @@ function Table({
             top: "20vh",
           }}
         >
-          Dealer Score: {dealerScore}
+          <b>Dealer Score: {dealerScore}</b>
         </div>
       ) : null}
       <div style={{ position: "absolute", display: "flex", left: "10vw" }}>

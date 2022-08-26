@@ -8,7 +8,7 @@ function BetAmount({ betAmount, setBetAmount, hasTokens }) {
         style={{
           position: "absolute",
           top: "20px",
-          width: "200px"
+          width: "200px",
         }}
         src="images/819-8194226_blackjack-instant-game-logo-graphic-design.png"
       ></img>
@@ -20,12 +20,12 @@ function BetAmount({ betAmount, setBetAmount, hasTokens }) {
         }}
         variant="primary"
       >
-        Place Bet
+       <b>Place Bet</b>
       </Button>
       <div
         style={{
           position: "absolute",
-          width: "100px",
+          width: "80px",
           height: "30px",
           background: "white",
           top: "78%",
@@ -34,20 +34,20 @@ function BetAmount({ betAmount, setBetAmount, hasTokens }) {
           alignItems: "center",
         }}
       >
-        {betAmount}
+        <b>{betAmount}</b>
       </div>
       <Button
         onClick={() => setBetAmount(0)}
         style={{
           position: "absolute",
           top: "87%",
-          width: "45px",
+          width: "50px",
           display: "flex",
           justifyContent: "center",
         }}
         variant="primary"
       >
-        Reset
+        <b>Reset</b>
       </Button>
     </>
   );

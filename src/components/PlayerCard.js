@@ -2,6 +2,7 @@ import React from 'react'
 
 function PlayerCard({card}) {
     const {Number, Value, Suit} = card
+
   return (
     <div
       style={{
@@ -14,9 +15,11 @@ function PlayerCard({card}) {
       }}
     >
       <div style={{ marginTop: "25px" }}>
-        <b>{Value}</b>
+        <b style={{ color: Suit === "♦" || Suit === "♥" ? "red" : null }}>
+          {Value}
+        </b>
       </div>
-      <div style={{fontSize: "1.5em"}}>{Suit}</div>
+      <div style={{ color: Suit === "♦" || Suit === "♥" ? "red" : null, fontSize: "1.5em" }}>{Suit}</div>
     </div>
   );
 }
