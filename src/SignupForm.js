@@ -35,14 +35,14 @@ function SignupForm({
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        fetch("http://localhost:9292/users", {
+        fetch("https://salty-mesa-23649.herokuapp.com/users", {
           method: "POST",
           body: JSON.stringify({
             username: username,
             email: email,
           }),
           headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
           },
         });

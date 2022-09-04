@@ -25,7 +25,9 @@ function PlayerInput({
 }) {
   function hasPushed() {
     let newTokens = sinatraUser.tokens + betAmount;
-    fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
+    fetch(
+      `https://salty-mesa-23649.herokuapp.com/users/${sinatraUser.email}/${newTokens}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setSinatraUser(null);
@@ -36,7 +38,9 @@ function PlayerInput({
 
   function hasWon() {
     let newTokens = sinatraUser.tokens + betAmount * 2;
-    fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
+    fetch(
+      `https://salty-mesa-23649.herokuapp.com/users/${sinatraUser.email}/${newTokens}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setSinatraUser(null);
@@ -199,7 +203,7 @@ function PlayerInput({
             fontSize: "2.5em",
           }}
         >
-          <b>You won {betAmount * 2} tokens!</b>
+          <b>You won!</b>
         </div>
       ) : null}
       {lost ? (

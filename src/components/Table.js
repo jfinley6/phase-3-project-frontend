@@ -122,13 +122,15 @@ function Table({
     } else {
       if (betAmount <= sinatraUser.tokens) {
         let newTokens = sinatraUser.tokens - betAmount;
-        fetch(`http://localhost:9292/users/${sinatraUser.email}/${newTokens}`)
+        fetch(
+          `https://salty-mesa-23649.herokuapp.com/users/${sinatraUser.email}/${newTokens}`
+        )
           .then((res) => res.json())
           .then((data) => {
             setSinatraUser(null);
             setSinatraUser(data);
             setGameStarted(true);
-            setPlayerTurn(true)
+            setPlayerTurn(true);
           })
           .then(() => createDeck());
       } else {

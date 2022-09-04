@@ -9,7 +9,7 @@ function IconStore({ show, handleClose, sinatraUser, setSinatraUser }) {
   const [icons, setIcons] = useState([]);
 
   useState(() => {
-    fetch("http://localhost:9292/store_icons")
+    fetch("https://salty-mesa-23649.herokuapp.com/store_icons")
       .then((res) => res.json())
       .then((data) => setIcons(data));
   }, []);
@@ -38,7 +38,9 @@ function IconStore({ show, handleClose, sinatraUser, setSinatraUser }) {
   });
 
   function changeIcon(image, name) {
-    fetch(`http://localhost:9292/icon/${sinatraUser.email}/${name}/${image}`)
+    fetch(
+      `https://salty-mesa-23649.herokuapp.com/icon/${sinatraUser.email}/${name}/${image}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setSinatraUser(null);

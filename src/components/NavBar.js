@@ -21,11 +21,13 @@ function NavBar({
 
   function addTokens() {
     if (sinatraUser.tokens < 10) {
-      fetch(`http://localhost:9292/users/${sinatraUser.email}/100`)
+      fetch(
+        `https://salty-mesa-23649.herokuapp.com/users/${sinatraUser.email}/100`
+      )
         .then((res) => res.json())
         .then((data) => {
-          setSinatraUser(null)
-          setSinatraUser(data)
+          setSinatraUser(null);
+          setSinatraUser(data);
         });
     }
   }

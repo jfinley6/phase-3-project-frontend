@@ -40,10 +40,11 @@ function App() {
 
   useEffect(() => {
     setLeaders([]);
-    fetch("http://localhost:9292/users")
+    fetch("https://salty-mesa-23649.herokuapp.com//users")
       .then((res) => res.json())
       .then((data) => {
-        setLeaders(data)});
+        setLeaders(data);
+      });
   }, [sinatraUser]);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ function App() {
       if (user === null) {
         return;
       } else {
-        fetch(`http://localhost:9292/users/${user.email}`)
+        fetch(`https://salty-mesa-23649.herokuapp.com/users/${user.email}`)
           .then((res) => res.json())
           .then((data) => setSinatraUser(data));
       }

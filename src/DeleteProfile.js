@@ -7,13 +7,17 @@ function DeleteProfile({show, handleClose, setGameStarted, playerCards, dealerCa
 
 
     function deleteProfile() {
-         fetch(`http://localhost:9292/users/${sinatraUser.email}`, {
-           method: "DELETE",
-         }).then(() => {
-          setPlayerCards([])
-          setDealerCards([])
-          setGameStarted(false)
-          auth.signOut()});
+         fetch(
+           `https://salty-mesa-23649.herokuapp.com/users/${sinatraUser.email}`,
+           {
+             method: "DELETE",
+           }
+         ).then(() => {
+           setPlayerCards([]);
+           setDealerCards([]);
+           setGameStarted(false);
+           auth.signOut();
+         });
         setDealerCards([])
         setPlayerCards([])
         setGameStarted(false)
