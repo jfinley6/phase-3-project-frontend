@@ -49,6 +49,7 @@ function SignupForm({
         });
       })
       .then((data) => {
+        setSinatraUser(null)
         setSinatraUser(data);
       });
 
