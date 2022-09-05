@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { auth } from "./firebase";
 
 // import firebase from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function SignupForm({
   handleClose,
@@ -17,6 +17,7 @@ function SignupForm({
   username,
   setUsername,
   user,
+  setSinatraUser
 }) {
   const signUp = (e) => {
     e.preventDefault();
@@ -47,11 +48,9 @@ function SignupForm({
           },
         });
       })
-      .then((authUser) => {
-        return authUser.user.updateProfile({
-          displayName: username,
-        });
-      })
+      .then((data) => {
+        setSinatraUser(data);
+      });
 
     handleClose();
   };

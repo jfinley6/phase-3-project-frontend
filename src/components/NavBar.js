@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import { auth } from "../firebase";
@@ -71,6 +71,7 @@ function NavBar({
                 setDealerCards([]);
                 setPlayerCards([]);
                 auth.signOut();
+                setSinatraUser(null);
               }}
               variant="primary"
             >
@@ -82,14 +83,14 @@ function NavBar({
                   <i
                     style={{ width: "25px" }}
                     className={
-                      sinatraUser === null
-                        ? null
+                      sinatraUser === null || sinatraUser === undefined
+                        ? ""
                         : sinatraUser.icons[0].image_url + " fa-lg"
                     }
                   ></i>
                   <b>
-                    {sinatraUser === null
-                      ? null
+                    {sinatraUser === null || sinatraUser === undefined
+                      ? "Loading"
                       : ` • ${sinatraUser.tokens} tokens`}
                   </b>
                 </span>

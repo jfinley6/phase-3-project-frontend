@@ -59,7 +59,9 @@ function App() {
       } else {
         fetch(`https://salty-mesa-23649.herokuapp.com/users/${user.email}`)
           .then((res) => res.json())
-          .then((data) => setSinatraUser(data));
+          .then((data) => {
+            setSinatraUser(null)
+            setSinatraUser(data)});
       }
     });
     return () => {
@@ -156,6 +158,7 @@ function App() {
           email={email}
           password={password}
           user={user}
+          setSinatraUser={setSinatraUser}
         />
         <Profile
           show={showProfile}

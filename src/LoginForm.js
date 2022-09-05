@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { auth } from "./firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function LoginForm({
   show,
@@ -12,7 +12,6 @@ function LoginForm({
   setPassword,
   password,
   email,
-  user,
 }) {
   const signIn = (e) => {
     e.preventDefault();
