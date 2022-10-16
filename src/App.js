@@ -36,16 +36,25 @@ function App() {
   const [leaderboard, setShowLeaderboard] = useState(false);
   const [leaders, setLeaders] = useState([]);
   const [showIconStore, setShowIconStore] = useState(false);
-  const [showBlackJackRules, setShowBlackJackRules] = useState(false)
+  const [showBlackJackRules, setShowBlackJackRules] = useState(false);
+  const [heroku, setHeroku] = useState(false);
 
   useEffect(() => {
     setLeaders([]);
-    fetch("https://salty-mesa-23649.herokuapp.com//users")
+    fetch("https://salty-mesa-23649.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => {
         setLeaders(data);
       });
   }, [sinatraUser]);
+
+  useEffect(() => {
+    fetch("https://salty-mesa-23649.herokuapp.com/users").then((res) => {
+      if (res.status === 200) {
+        setHeroku(true);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
@@ -60,8 +69,9 @@ function App() {
         fetch(`https://salty-mesa-23649.herokuapp.com/users/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
-            setSinatraUser(null)
-            setSinatraUser(data)});
+            setSinatraUser(null);
+            setSinatraUser(data);
+          });
       }
     });
     return () => {
@@ -76,108 +86,134 @@ function App() {
     setShowDeleteProfile(false);
     setShowLeaderboard(false);
     setShowIconStore(false);
-    setShowBlackJackRules(false)
+    setShowBlackJackRules(false);
   };
 
   return (
-    <div className="App">
-      <NavBar
-        setShow={setShow}
-        header={"login"}
-        setShowSignup={setShowSignup}
-        user={user}
-        sinatraUser={sinatraUser}
-        setShowProfile={setShowProfile}
-        setShowDeleteProfile={setShowDeleteProfile}
-        setGameStarted={setGameStarted}
-        playerCards={playerCards}
-        setPlayerCards={setPlayerCards}
-        dealerCards={dealerCards}
-        setDealerCards={setDealerCards}
-        setShowLeaderboard={setShowLeaderboard}
-        setShowIconStore={setShowIconStore}
-        setSinatraUser={setSinatraUser}
-        setShowBlackJackRules={setShowBlackJackRules}
-      />
-      <div className="Content">
-        <HomePagePicture
-          user={user}
-          sinatraUser={sinatraUser}
-          setSinatraUser={setSinatraUser}
-          gameStarted={gameStarted}
-          setGameStarted={setGameStarted}
-          playerCards={playerCards}
-          setPlayerCards={setPlayerCards}
-          dealerCards={dealerCards}
-          setDealerCards={setDealerCards}
-          playerScore={playerScore}
-          setPlayerScore={setPlayerScore}
-          dealersTurn={dealersTurn}
-          setDealersTurn={setDealersTurn}
-          dealerScore={dealerScore}
-          setDealerScore={setDealerScore}
-          playerTurn={playerTurn}
-          setPlayerTurn={setPlayerTurn}
-          isPlayerBusted={isPlayerBusted}
-          setIsPlayerBusted={setIsPlayerBusted}
-          win={win}
-          setWin={setWin}
-          lost={lost}
-          setLost={setLost}
-          push={push}
-          setPush={setPush}
-        />
-        <LoginForm
-          show={show}
-          handleClose={handleClose}
-          email={email}
-          password={password}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          user={user}
-        />
-        <IconStore
-          show={showIconStore}
-          handleClose={handleClose}
-          sinatraUser={sinatraUser}
-          setSinatraUser={setSinatraUser}
-        />
+    <>
+      {heroku === true ? (
+        <div className="App">
+          <NavBar
+            setShow={setShow}
+            header={"login"}
+            setShowSignup={setShowSignup}
+            user={user}
+            sinatraUser={sinatraUser}
+            setShowProfile={setShowProfile}
+            setShowDeleteProfile={setShowDeleteProfile}
+            setGameStarted={setGameStarted}
+            playerCards={playerCards}
+            setPlayerCards={setPlayerCards}
+            dealerCards={dealerCards}
+            setDealerCards={setDealerCards}
+            setShowLeaderboard={setShowLeaderboard}
+            setShowIconStore={setShowIconStore}
+            setSinatraUser={setSinatraUser}
+            setShowBlackJackRules={setShowBlackJackRules}
+          />
+          <div className="Content">
+            <HomePagePicture
+              user={user}
+              sinatraUser={sinatraUser}
+              setSinatraUser={setSinatraUser}
+              gameStarted={gameStarted}
+              setGameStarted={setGameStarted}
+              playerCards={playerCards}
+              setPlayerCards={setPlayerCards}
+              dealerCards={dealerCards}
+              setDealerCards={setDealerCards}
+              playerScore={playerScore}
+              setPlayerScore={setPlayerScore}
+              dealersTurn={dealersTurn}
+              setDealersTurn={setDealersTurn}
+              dealerScore={dealerScore}
+              setDealerScore={setDealerScore}
+              playerTurn={playerTurn}
+              setPlayerTurn={setPlayerTurn}
+              isPlayerBusted={isPlayerBusted}
+              setIsPlayerBusted={setIsPlayerBusted}
+              win={win}
+              setWin={setWin}
+              lost={lost}
+              setLost={setLost}
+              push={push}
+              setPush={setPush}
+            />
+            <LoginForm
+              show={show}
+              handleClose={handleClose}
+              email={email}
+              password={password}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              user={user}
+            />
+            <IconStore
+              show={showIconStore}
+              handleClose={handleClose}
+              sinatraUser={sinatraUser}
+              setSinatraUser={setSinatraUser}
+            />
 
-        <Leaderboard
-          show={leaderboard}
-          handleClose={handleClose}
-          leaders={leaders}
-        />
-        <SignupForm
-          show={signup}
-          handleClose={handleClose}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          setUsername={setUsername}
-          username={username}
-          email={email}
-          password={password}
-          user={user}
-          setSinatraUser={setSinatraUser}
-        />
-        <Profile
-          show={showProfile}
-          handleClose={handleClose}
-          sinatraUser={sinatraUser}
-        />
-        <DeleteProfile
-          show={showDeleteProfile}
-          handleClose={handleClose}
-          sinatraUser={sinatraUser}
-          setGameStarted={setGameStarted}
-          playerCards={playerCards}
-          setPlayerCards={setPlayerCards}
-          dealerCards={dealerCards}
-          setDealerCards={setDealerCards}
-        />
-      <BlackJackRules show={showBlackJackRules} handleClose={handleClose} />
-      </div>
-    </div>
+            <Leaderboard
+              show={leaderboard}
+              handleClose={handleClose}
+              leaders={leaders}
+            />
+            <SignupForm
+              show={signup}
+              handleClose={handleClose}
+              setEmail={setEmail}
+              setPassword={setPassword}
+              setUsername={setUsername}
+              username={username}
+              email={email}
+              password={password}
+              user={user}
+              setSinatraUser={setSinatraUser}
+            />
+            <Profile
+              show={showProfile}
+              handleClose={handleClose}
+              sinatraUser={sinatraUser}
+            />
+            <DeleteProfile
+              show={showDeleteProfile}
+              handleClose={handleClose}
+              sinatraUser={sinatraUser}
+              setGameStarted={setGameStarted}
+              playerCards={playerCards}
+              setPlayerCards={setPlayerCards}
+              dealerCards={dealerCards}
+              setDealerCards={setDealerCards}
+            />
+            <BlackJackRules
+              show={showBlackJackRules}
+              handleClose={handleClose}
+            />
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            height: "100vh",
+          }}
+        >
+          <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <b>Heroku Loading</b>
+        </div>
+      )}
+    </>
   );
 }
 
