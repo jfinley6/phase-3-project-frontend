@@ -69,7 +69,6 @@ function App() {
         fetch(`https://salty-mesa-23649.herokuapp.com/users/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
-            setSinatraUser(null);
             setSinatraUser(data);
           });
       }
@@ -77,7 +76,7 @@ function App() {
     return () => {
       unsubcribe();
     };
-  }, [user, username]);
+  }, [user]);
 
   const handleClose = () => {
     setShow(false);
