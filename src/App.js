@@ -37,7 +37,7 @@ function App() {
   const [leaders, setLeaders] = useState([]);
   const [showIconStore, setShowIconStore] = useState(false);
   const [showBlackJackRules, setShowBlackJackRules] = useState(false);
-  const [heroku, setHeroku] = useState(false);
+  const [heroku, setHeroku] = useState("");
 
   useEffect(() => {
     setLeaders([]);
@@ -54,7 +54,7 @@ function App() {
         setHeroku(true);
       }
     });
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const unsubcribe = auth.onAuthStateChanged((authUser) => {
